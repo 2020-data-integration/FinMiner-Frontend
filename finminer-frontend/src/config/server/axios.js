@@ -11,13 +11,15 @@ import {message} from "antd";
  */
 
 const globalAxios = axios.create({
-  baseURL: "https://5ede1546e36dd000166c7ef8.mockapi.io/api/"
+  baseURL:
+    process.env.NODE_ENV === "production" ?
+      "" : "https://5ede1546e36dd000166c7ef8.mockapi.io/api/"
 });
 
 //添加一个请求拦截器
 globalAxios.interceptors.request.use(function (config) {
   //在请求发出之前进行一些操作
-  message.loading("please waiting for a moment ... 😄");
+  message.loading("please waiting for a moment ... 😄",0.2);
   return config;
 }, function (err) {
   //Do something with request error
@@ -30,7 +32,7 @@ globalAxios.interceptors.response.use(function (res) {
   message.success("requesting success 🎉");
   return res;
 }, function (err) {
-  message.error(err+" 😭");
+  message.error(err + " 😭");
   return Promise.reject(err);
 });
 

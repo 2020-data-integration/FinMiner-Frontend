@@ -1,15 +1,13 @@
 import React from "react";
 import logo from "../logo.svg";
 import '../App.css';
-import {apiTest} from "../api/index.api";
-import {message} from "antd";
+import {apiTest} from "../api/index.api.ts";
 
 
 class Homepage extends React.Component {
    componentDidMount() {
     const res=apiTest();
     res.then((data)=>{
-      message.success("requesting success 🎉");
       console.log(data)});
   }
 
