@@ -1,7 +1,13 @@
+/**
+ * echarts模块
+ * @author Alexchanchic
+ * @data 2020.06.09
+ */
 import * as React from "react";
 import ReactEcharts from "echarts-for-react";
 
 import * as echarts from "echarts";
+
 
 export function ECharts() {
   const dataAxis = ["10,20", "10.21", "10.22", "10,20", "10.21", "10.22", "10,20", "10.21", "10.22", "10,20", "10.21", "10.22", "10,20", "10.21", "10.22", "10,20", "10.21", "10.22"];
