@@ -12,8 +12,6 @@ const {Header} = Layout;
 
 
 export class PageHeader extends React.Component {
-
-
   render(): ReactNode {
     return (
         <Header>
