@@ -7,7 +7,7 @@ import {PageHeader} from "../../components/layout/header";
 export const RouteConfig = () => (
   <BrowserRouter>
     <PageHeader />
-    <Route path='/react' component={Homepage} />
+    <Route path='/dashboard' component={Homepage} />
     <Route path='/charts' component={Charts} />
   </BrowserRouter>
 );
@@ -15,8 +15,8 @@ export const RouteConfig = () => (
 
 export const RouteList = [
   {
-    path: "/react",
-    name: "React"
+    path: "/dashboard",
+    name: "Dashboard"
   },
   {
     path: "/charts",
