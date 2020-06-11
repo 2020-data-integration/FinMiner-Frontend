@@ -320,3 +320,131 @@ export function GeoChart() {
   );
 }
 
+export function MapChart() {
+    var nodes = []
+    var links = []
+    nodes=[
+        {category:0, name: '平安银行',symbolSize:50},
+        {category:0, name: '交通银行',symbolSize:50},
+        {category:0, name: '联邦集团',symbolSize:50},
+        {category:1, name: '王大佬',symbolSize:45},
+        {category:2, name: '史蒂夫-沃兹尼艾克',symbolSize:40},
+        {category:2, name: '奥巴马',symbolSize:40},
+        {category:2, name: '比尔-盖茨',symbolSize:40},
+        {category:2, name: '乔纳森-艾夫',symbolSize:40}
+    ]
+        //创建links
+    links=[
+            {source : '王大佬', target : '平安银行',value :'hold_stock\r'},
+            {source : '史蒂夫-沃兹尼艾克', target : '平安银行',value :'work_in'},
+            {source : '奥巴马', target : '平安银行',value :'work_in'},
+            {source : '比尔-盖茨', target : '平安银行',value :'work_in'},
+            {source : '乔纳森-艾夫', target : '平安银行',value:'work_in'},
+            {source : '交通银行', target : '平安银行',value:'hold_stock'},
+            {source : '交通银行', target : '联邦集团',value:'hold_stock'},
+        ]
+    const categories= [
+        {
+            name: 'Company',
+            itemStyle: {
+                normal: {
+                    color: '#c489e6'
+                }
+            }
+        }, {
+            name: 'Holder',
+            itemStyle: {
+                normal: {
+                    color: "#148b96"
+                }
+            }
+        }, {
+            name: 'Manager',
+            itemStyle: {
+                normal: {
+                    color: '#BC8F8F'
+                }
+            }
+        }]
+
+   const option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+
+        },
+       legend: {
+           y:'5%',
+           textStyle:{
+               fontSize: 18,//字体大小
+               color: '#ffffff'//字体颜色
+           },
+           data: categories.map(function (a) {//显示策略
+               return a.name;
+           })
+       },
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        label: {
+            normal: {
+                show: true,
+                textStyle: {
+                    fontSize: 12
+                }
+            }
+        },
+        series: [
+            {
+                type: 'graph',
+                layout: 'force',
+                focusNodeAdjacency: true,
+                roam: true,
+                draggable: true,
+                categories: categories,
+                edgeSymbol: ['none','arrow'],
+                edgeSymbolSize: [1, 10],
+                force: {
+                    repulsion: 2500,
+                    edgeLength: [10, 50]
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 12
+                        }
+                    },
+                    position: 'right'
+                },
+                itemStyle: {
+                    borderColor: '#fff', // 节点边框背景色白色
+                    borderWidth: 1,
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)'
+                },
+                data: nodes,
+                links: links,
+                lineStyle: {
+                    normal: {
+                        opacity: 0.9,
+                        width: 1,
+                        curveness: 0.3,
+                        color: 'source'
+                    }
+                },
+                emphasis: { // 高亮的图形样式
+                    lineStyle: {
+                        width: 5
+                    }
+                }
+            }
+        ]
+
+    };
+    return (
+        // @ts-ignore
+        <ReactEcharts option={option} style={{"height": 600}} />
+    );
+}
+

@@ -1,5 +1,5 @@
 import React from "react";
-import {Candlestick, ECharts, GeoChart} from "../components/public/charts";
+import {Candlestick, ECharts, GeoChart, MapChart} from "../components/public/charts";
 
 class Charts extends React.Component {
 
@@ -9,6 +9,7 @@ class Charts extends React.Component {
         <GeoChart />
         <ECharts />
         <Candlestick />
+        <MapChart/>
       </div>
     );
   }
