@@ -1,7 +1,10 @@
 import globalAxios from "../config/server/axios";
 import {BasicResponse} from "./interfaces/response/BasicResponse";
 
-export async function apiTest(): Promise<BasicResponse> {
-  const {data} = await globalAxios.get("/test");
+
+
+// 接口4. 获取股票列表
+export async function apiGetStockList(): Promise<BasicResponse>{
+  const {data} = await globalAxios.get("/stock/all");
   return data;
 }

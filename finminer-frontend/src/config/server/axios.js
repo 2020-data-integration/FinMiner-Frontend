@@ -13,7 +13,7 @@ import {message} from "antd";
 const globalAxios = axios.create({
   baseURL:
     process.env.NODE_ENV === "production" ?
-      "" : "https://5ede1546e36dd000166c7ef8.mockapi.io/api/"
+      "" : "http://47.101.33.219"
 });
 
 //添加一个请求拦截器

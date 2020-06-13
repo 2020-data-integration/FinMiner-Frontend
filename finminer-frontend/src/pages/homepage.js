@@ -1,15 +1,11 @@
 import React from "react";
 import logo from "../logo.svg";
-import '../App.css';
-import {apiTest} from "../api/index.api.ts";
+import "../App.css";
 
 
 class Homepage extends React.Component {
-   componentDidMount() {
-    const res=apiTest();
-    res.then((data)=>{
-      console.log(data)});
-  }
+
+
 
   render() {
     return (
@@ -23,4 +19,5 @@ class Homepage extends React.Component {
 
   }
 }
+
 export default Homepage;
