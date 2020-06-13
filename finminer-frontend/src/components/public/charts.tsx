@@ -333,9 +333,8 @@ export function MapChart() {
         {category:2, name: '比尔-盖茨',symbolSize:40},
         {category:2, name: '乔纳森-艾夫',symbolSize:40}
     ]
-        //创建links
     links=[
-            {source : '王大佬', target : '平安银行',value :'hold_stock\r'},
+            {source : '王大佬', target : '平安银行',value :'hold_stock'},
             {source : '史蒂夫-沃兹尼艾克', target : '平安银行',value :'work_in'},
             {source : '奥巴马', target : '平安银行',value :'work_in'},
             {source : '比尔-盖茨', target : '平安银行',value :'work_in'},
