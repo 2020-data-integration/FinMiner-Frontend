@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 0vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,16 +46,39 @@
 
 .vcenter {
   position:absolute;
-  left:7%;
-  top:15%;
-  font-size:210%;
+  left:10%;
+  top:70px;
+  font-size:450%;
   font-family: fantasy;
 }
 .center {
-  position:absolute;
-  top:50%;
-  left:7%;
-  font-size:100%;
+    position:absolute;
+  top:250px;
+  left:10%;
+  font-size:230%;
   font-family: fantasy;
   text-align: left;
+}
+
+.ti{
+    position:relative;
+}
+.detail{
+  padding: 50px;
+  font-size:250%;
+}
+.sli{
+   padding-left:30%;
+   padding-right:30%;
+   font-size:250%;
+  height: 400px;
+ }
+.content{
+  font-size:60%;
+}
+.getInfo{
+  width: 300px;
+  font-size:150%;
+  background-color: antiquewhite;
+  color: burlywood;
 }
