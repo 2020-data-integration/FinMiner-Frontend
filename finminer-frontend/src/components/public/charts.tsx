@@ -331,7 +331,8 @@ export function MapChart() {
         {category:2, name: '史蒂夫-沃兹尼艾克',symbolSize:40},
         {category:2, name: '奥巴马',symbolSize:40},
         {category:2, name: '比尔-盖茨',symbolSize:40},
-        {category:2, name: '乔纳森-艾夫',symbolSize:40}
+        {category:2, name: '乔纳森-艾夫',symbolSize:40},
+        {category:3, name: '阿一古',symbolSize:40}
     ]
     links=[
             {source : '王大佬', target : '平安银行',value :'hold_stock'},
@@ -341,6 +342,7 @@ export function MapChart() {
             {source : '乔纳森-艾夫', target : '平安银行',value:'work_in'},
             {source : '交通银行', target : '平安银行',value:'hold_stock'},
             {source : '交通银行', target : '联邦集团',value:'hold_stock'},
+            {source : '阿一古', target : '联邦集团',value:'hold_stock'},
         ]
     const categories= [
         {
@@ -362,6 +364,13 @@ export function MapChart() {
             itemStyle: {
                 normal: {
                     color: '#BC8F8F'
+                }
+            }
+        }, {
+            name: 'Concept',
+            itemStyle: {
+                normal: {
+                    color: '#72d5c3'
                 }
             }
         }]

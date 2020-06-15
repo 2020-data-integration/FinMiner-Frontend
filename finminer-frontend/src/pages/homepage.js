@@ -1,7 +1,8 @@
 import React from "react";
 import '../App.css';
 import {apiTest} from "../api/index.api.ts";
-import {Wrapper,Cover} from "../components/public/Homepage";
+import {Wrapper,Cover,GDPMap,StockMap} from "../components/public/Homepage";
+
 
 class Homepage extends React.Component {
 
@@ -19,6 +20,9 @@ class Homepage extends React.Component {
               <body>
               <Cover />
               <Wrapper />
+
+              <GDPMap />
+              <StockMap/>
               </body>
           </div>
 
