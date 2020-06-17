@@ -122,8 +122,6 @@ export function Candlestick(klineData: StockKLineResponse[]) {
     }
     return result;
   }
-
-  console.log(rawData);
   let dates = rawData.map(function (item: StockKLineResponse) {
     return item.date;
   });
@@ -316,7 +314,7 @@ export function GeoChart() {
   };
   return (
       // @ts-ignore
-      <ReactEcharts option={option} style={{"height": 600}} />
+      <ReactEcharts option={option} style={{"height": 'calc(100vh - 64px)'}} />
   );
 }
 

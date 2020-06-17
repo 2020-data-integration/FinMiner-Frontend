@@ -29,8 +29,6 @@ class Charts extends React.Component {
     return (
       <div>
         <GeoChart />
-        <ECharts />
-        {Candlestick(this.state.kLineData)}
       </div>
     );
   }
