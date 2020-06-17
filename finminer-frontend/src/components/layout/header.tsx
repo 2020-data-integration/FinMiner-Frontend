@@ -11,7 +11,7 @@ import {RouteList} from "../../config/routes/index.route";
 const {Header} = Layout;
 
 
-export class PageHeader extends React.Component {
+export class PageHeader extends React.Component<any, any> {
   render(): ReactNode {
     return (
         <Header>

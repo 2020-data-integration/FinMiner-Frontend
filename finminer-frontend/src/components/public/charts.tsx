@@ -247,7 +247,7 @@ export function Candlestick(klineData: StockKLineResponse[]) {
   };
   return (
       // @ts-ignore
-      <ReactEcharts option={option} />
+      <ReactEcharts option={option} style={{height:"calc( 100vh - 300px)"}} />
   );
 }
 

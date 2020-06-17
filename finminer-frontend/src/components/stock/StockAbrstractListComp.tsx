@@ -84,6 +84,15 @@ class StockAbstractListComp extends React.Component<any, any> {
 
   componentDidMount(): void {
     this.getStockAbstractData(this.state.pageNum, this.pageSize);
+    this.props.history.listen((location: { pathname: string }) => {
+      // 最新路由的 location 对象，可以通过比较 pathname 是否相同来判断路由的变化情况
+      if (this.props.location.pathname !== location.pathname) {
+        if (location.pathname.split("/").length === 2) {
+          this.expandCollapsed();
+        }
+      }
+    });
+
   }
 
   render(): React.ReactNode {
