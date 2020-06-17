@@ -36,10 +36,13 @@ export class StockAbstractListComp extends React.Component {
 
   // 增量更新数据面板数据
   async getStockAbstractData(pageNum: number, pageSize: number) {
-    const res = await apiGetStockAbstract(pageNum, pageSize);
-    this.state.stockList.push(...res.data);
-    console.log(this.state.stockList);
     console.log(this.state.pageNum);
+    const currentStockList = this.state.stockList;
+    const res = await apiGetStockAbstract(pageNum, pageSize);
+    currentStockList.push(...res.data);
+    this.setState({
+      stockList: currentStockList
+    });
   }
 
   // 点开某支股票后展示数据渲染详情
@@ -55,11 +58,12 @@ export class StockAbstractListComp extends React.Component {
     } else {
       this.setState({
         pageNum: this.state.pageNum + 1
-      });
-      this.getStockAbstractData(this.state.pageNum, this.pageSize);
+      },()=>this.getStockAbstractData(this.state.pageNum, this.pageSize));
+
     }
 
   };
+
   // 单个股票的数据面板组件
   getStockAbstractComp = (props: StockAbstractResponse) => {
     return (
@@ -81,11 +85,11 @@ export class StockAbstractListComp extends React.Component {
         <Layout>
           <Sider style={this.state.isCollapsed ? {
             overflow: "auto",
-            height: "100vh",
+            height: "90vh",
             position: "fixed",
             left: 0,
           } : {}}>
-            <div style={this.state.isCollapsed ? {} : {width: "100vw"}}>
+            <div style={this.state.isCollapsed ? {width: "195px"} : {width: "100vw"}}>
               <Menu
                   mode={"inline"}
                   onClick={this.showDetail}
