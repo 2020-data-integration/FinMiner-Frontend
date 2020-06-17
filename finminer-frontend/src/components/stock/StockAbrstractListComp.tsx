@@ -10,10 +10,13 @@ import {Layout, Menu, Breadcrumb} from "antd";
 import {apiGetStockAbstract} from "../../api/index.api";
 import {ClickParam} from "antd/lib/menu";
 import {DownOutlined} from "@ant-design/icons";
+import {Link, Route} from "react-router-dom";
+import {DashboardRouteList} from "../../config/routes/index.route";
+import {withRouter} from "react-router-dom";
 
 const {Header, Sider, Content} = Layout;
 
-export class StockAbstractListComp extends React.Component {
+class StockAbstractListComp extends React.Component<any, any> {
   state = {
     isCollapsed: false,
     selectedStock: "",
@@ -54,11 +57,14 @@ export class StockAbstractListComp extends React.Component {
       }
       this.setState({
         selectedStock: key
+      }, () => {
+        this.props.history.push("/dashboard/" + key + "/info");
       });
+
     } else {
       this.setState({
         pageNum: this.state.pageNum + 1
-      },()=>this.getStockAbstractData(this.state.pageNum, this.pageSize));
+      }, () => this.getStockAbstractData(this.state.pageNum, this.pageSize));
 
     }
 
@@ -104,12 +110,19 @@ export class StockAbstractListComp extends React.Component {
                 <Layout style={{marginLeft: 200, padding: "20px 30px",}}>
                   <Header>
                     <Breadcrumb style={{margin: "18px 0"}}>
-                      <Breadcrumb.Item>基本信息</Breadcrumb.Item>
-                      <Breadcrumb.Item>K线图</Breadcrumb.Item>
-                      <Breadcrumb.Item>知识图谱</Breadcrumb.Item>
+                      {
+                        DashboardRouteList(this.state.selectedStock).map((route) =>
+                            <Breadcrumb.Item key={route.name}>
+                              <Link to={route.path}>{route.name}</Link>
+                            </Breadcrumb.Item>)
+                      }
                     </Breadcrumb>
                   </Header>
-                  <Content>123
+                  <Content>
+                    {
+                      DashboardRouteList(this.state.selectedStock).map((route) =>
+                          <Route path={route.path} component={route.component} key={route.name} />)
+                    }
                   </Content>
                 </Layout>
                 : <></>
@@ -121,4 +134,6 @@ export class StockAbstractListComp extends React.Component {
 
 
 }
+
+export default withRouter(StockAbstractListComp);
 

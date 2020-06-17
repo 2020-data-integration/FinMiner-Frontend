@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import {StockAbstractListComp} from "../components/stock/StockAbrstractListComp";
+import StockAbstractListComp from "../components/stock/StockAbrstractListComp";
 
 
 class Dashboard extends React.Component {
