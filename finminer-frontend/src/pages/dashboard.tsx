@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
+import {StockAbstractListComp} from "../components/stock/StockAbrstractListComp";
 import {apiGetStockList} from "../api/index.api";
-import {PageDashboardInterface} from "../interfaces/pages/PageDashboardInterface";
 
 
 class Dashboard extends React.Component {
@@ -21,12 +21,13 @@ class Dashboard extends React.Component {
 
 
   render() {
-    const {stockList} = this.state as PageDashboardInterface;
+    // const {stockList} = this.state as PageDashboardInterface;
     return (
         <div>
-          {stockList.map((stock: { companyName: string }) =>
-              <div>{stock.companyName}</div>)
-          }
+          {/*{stockList.map((stock: { companyName: string }) =>*/}
+          {/*<div>{stock.companyName}</div>)*/}
+          {/*}*/}
+          <StockAbstractListComp />
         </div>
 
     );

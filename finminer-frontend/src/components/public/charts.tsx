@@ -8,6 +8,7 @@ import ReactEcharts from "echarts-for-react";
 import * as echarts from "echarts";
 import {geojson} from "../../utils/geojson";
 import {kline} from "../../utils/kline";
+import {StockKLineResponse} from "../../api/interfaces/response/stock/StockResponse";
 
 
 export function ECharts() {
@@ -104,8 +105,8 @@ export function ECharts() {
   );
 }
 
-export function Candlestick() {
-  let rawData = kline;
+export function Candlestick(klineData: StockKLineResponse[]) {
+  let rawData = klineData;
 
   function calculateMA(dayCount: number, data: Array<Array<number>>) {
     let result = [];
@@ -123,13 +124,13 @@ export function Candlestick() {
     return result;
   }
 
-
-  let dates = rawData.map(function (item) {
-    return item[0];
+  console.log(rawData);
+  let dates = rawData.map(function (item: StockKLineResponse) {
+    return item.date;
   });
 
   let data = rawData.map(function (item) {
-    return [+item[1], +item[2], +item[5], +item[6]];
+    return [item.open, item.close, item.high, item.low];
   });
   let option = {
     backgroundColor: "transparent",

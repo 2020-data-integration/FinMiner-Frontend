@@ -4,7 +4,7 @@
  * @date 2020.06.12
  * @last
  */
-import {StockInfoResponse} from "../../api/interfaces/response/stock/StockDetailResponse";
+import {StockInfoResponse} from "../../api/interfaces/response/stock/StockResponse";
 
 export interface PageDashboardInterface {
   stockList: Array<StockInfoResponse>

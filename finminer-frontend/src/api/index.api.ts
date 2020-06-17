@@ -2,12 +2,12 @@ import globalAxios from "../config/server/axios";
 import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
-  StockDetailResponse,
-  StockKLineResponse
-} from "./interfaces/response/stock/StockDetailResponse";
+  StockResponse,
+  StockKLineResponse, StockInfoResponse
+} from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
-export async function apiGetStockDetailById(companyId: string): Promise<BasicResponse<StockDetailResponse>> {
+export async function apiGetStockDetailById(companyId: string): Promise<BasicResponse<StockResponse>> {
   const {data} = await globalAxios.get("/stock/info", {
     params: {companyId}
   });
@@ -23,8 +23,8 @@ export async function apiGetStockKLineById(companyId: string): Promise<BasicResp
 }
 
 // 接口3. 获取昨日行情信息
-export async function apiGetStock(pageNum: number, pageSize: number): Promise<BasicResponse<StockAbstractResponse[]>> {
-  const {data} = await globalAxios.get("/stock/series", {
+export async function apiGetStockAbstract(pageNum: number, pageSize: number): Promise<BasicResponse<StockAbstractResponse[]>> {
+  const {data} = await globalAxios.get("/stock/market", {
     params: {pageNum, pageSize}
   });
   return data;
@@ -32,7 +32,7 @@ export async function apiGetStock(pageNum: number, pageSize: number): Promise<Ba
 }
 
 // 接口4. 获取股票列表
-export async function apiGetStockList(): Promise<BasicResponse> {
+export async function apiGetStockList(): Promise<BasicResponse<StockInfoResponse[]>> {
   const {data} = await globalAxios.get("/stock/all");
   return data;
 }

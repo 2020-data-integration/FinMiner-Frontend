@@ -21,7 +21,7 @@ export interface StockAbstractResponse {
   amount: number
 }
 
-export interface StockDetailResponse {
+export interface StockResponse {
   name: string,
   fullName: string,
   managers: [{
@@ -56,4 +56,23 @@ export interface StockKLineResponse {
   close: number,
   high: number,
   low: number,
+}
+
+
+export interface node {
+  category: number, //0-Company,1-Holer,2-Manager
+  name: string,
+  symbolSize: number //节点大小，可固定，也可以动态
+}
+
+export interface link {
+  source: string,
+  target: string,
+  value: string  //联系
+
+}
+
+export interface StockNetworkResponse {
+  nodes: node[],
+  links: link[]
 }
