@@ -3,7 +3,7 @@ import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
   StockResponse,
-  StockKLineResponse, StockInfoResponse
+  StockKLineResponse
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
@@ -29,10 +29,4 @@ export async function apiGetStockAbstract(pageNum: number, pageSize: number): Pr
   });
   return data;
 
-}
-
-// 接口4. 获取股票列表
-export async function apiGetStockList(): Promise<BasicResponse<StockInfoResponse[]>> {
-  const {data} = await globalAxios.get("/stock/all");
-  return data;
 }

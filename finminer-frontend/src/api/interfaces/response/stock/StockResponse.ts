@@ -4,19 +4,17 @@
  * @date 2020.06.12
  */
 
-export interface StockInfoResponse {
-  companyId: string,
-  companyName: string
-}
-
 export interface StockAbstractResponse {
+  date: string
   companyId: string,
+  companyName: string,
   industry: string,
   open: number,
   close: number,
   high: number,
   low: number,
   change: number,
+  pct_chg: number,
   vol: number,
   amount: number
 }

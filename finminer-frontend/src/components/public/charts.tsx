@@ -7,7 +7,6 @@ import * as React from "react";
 import ReactEcharts from "echarts-for-react";
 import * as echarts from "echarts";
 import {geojson} from "../../utils/geojson";
-import {kline} from "../../utils/kline";
 import {StockKLineResponse} from "../../api/interfaces/response/stock/StockResponse";
 
 
