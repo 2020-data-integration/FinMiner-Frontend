@@ -3,7 +3,7 @@ import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
   StockResponse,
-  StockKLineResponse, CompanyResponse
+  StockKLineResponse, CompanyResponse, StockNetworkResponse
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
@@ -28,7 +28,14 @@ export async function apiGetStockAbstract(pageNum: number, pageSize: number): Pr
     params: {pageNum, pageSize}
   });
   return data;
+}
 
+// 接口5. 获取股票知识图谱
+export async function apiGetStockNetworkById(companyId: string): Promise<BasicResponse<StockNetworkResponse>> {
+  const {data} = await globalAxios.get("/stock/roadmap", {
+    params: {companyId}
+  });
+  return data;
 }
 
 // 接口7. 根据地区获取公司排名

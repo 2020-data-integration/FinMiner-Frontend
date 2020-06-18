@@ -43,7 +43,7 @@ export function DashboardRouteList(companyId) {
       component: StockCandlestickComp
     },
     {
-      path: basicPath + "network",
+      path: basicPath + "/network",
       name: "知识图谱",
       component: StockNetworkComp
     }
