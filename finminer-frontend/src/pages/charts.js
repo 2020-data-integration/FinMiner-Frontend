@@ -1,5 +1,5 @@
 import React from "react";
-import {GeoChart} from "../components/public/charts";
+import {GeoChart} from "../components/charts/GeoChart";
 import {apiGetStockKLineById} from "../api/index.api";
 
 class Charts extends React.Component {

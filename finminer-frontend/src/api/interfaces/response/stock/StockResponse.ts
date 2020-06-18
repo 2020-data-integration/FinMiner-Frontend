@@ -74,3 +74,16 @@ export interface StockNetworkResponse {
   nodes: node[],
   links: link[]
 }
+
+export interface CompanyResponse{
+  companyId: string,
+  industry: string,
+  open: number,
+  close: number,
+  high: number,
+  low: number,
+  change: number,
+  vol: number,
+  amount: number
+  total_asset: number
+}

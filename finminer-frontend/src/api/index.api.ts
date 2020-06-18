@@ -3,7 +3,7 @@ import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
   StockResponse,
-  StockKLineResponse
+  StockKLineResponse, CompanyResponse
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
@@ -29,4 +29,12 @@ export async function apiGetStockAbstract(pageNum: number, pageSize: number): Pr
   });
   return data;
 
+}
+
+// 接口7. 根据地区获取公司排名
+export async function apiGetCompanyRankByArea(area: string): Promise<BasicResponse<CompanyResponse[]>> {
+  const {data} = await globalAxios.get("/rank", {
+    params: {area}
+  });
+  return data;
 }
