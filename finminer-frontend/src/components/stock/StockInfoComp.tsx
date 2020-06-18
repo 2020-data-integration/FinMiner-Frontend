@@ -2,7 +2,7 @@ import * as React from "react";
 import {withRouter} from "react-router-dom";
 import {StockInfoResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {apiGetStockInfoById} from "../../api/index.api";
-
+import {Timeline, Spin} from "antd";
 
 class StockInfoComp extends React.Component<any, any> {
   state = {
@@ -18,12 +18,23 @@ class StockInfoComp extends React.Component<any, any> {
   }
 
   componentDidMount(): void {
-    this.getStockInfoData(this.state.companyId)
+    this.getStockInfoData(this.state.companyId);
   }
 
   render(): React.ReactNode {
+    const info = this.state.info;
     return (
-        <div>stockInfoComp</div>
+        <div>
+          {Object.keys(info).length === 0 ? <Spin /> :
+              <Timeline>
+                {
+                  info.announcement.map(info => <Timeline.Item>{info}</Timeline.Item>
+                  )
+                }
+
+              </Timeline>
+          }
+        </div>
     );
   }
 }

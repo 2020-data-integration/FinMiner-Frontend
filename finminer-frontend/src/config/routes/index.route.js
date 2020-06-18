@@ -11,21 +11,28 @@ import StockNetworkComp from "../../components/stock/StockNetworkComp";
 export const RouteConfig = () => (
   <BrowserRouter>
     <PageHeader />
-    <Route exact path='/' component={Homepage} />
-    <Route path='/dashboard' component={Dashboard} />
-    <Route path='/charts' component={Charts} />
+    {/*<Route exact path='/' component={Homepage} />*/}
+    {/*<Route path='/dashboard' component={Dashboard} />*/}
+    {/*<Route path='/charts' component={Charts} />*/}
   </BrowserRouter>
 );
 
 
 export const RouteList = [
   {
+    path: "/",
+    name: "首页",
+    component:Homepage
+  },
+  {
     path: "/dashboard",
-    name: "数据面板"
+    name: "数据面板",
+    component:Dashboard
   },
   {
     path: "/charts",
-    name: "GDP可视化"
+    name: "GDP可视化",
+    component: Charts
   }
 ];
 
