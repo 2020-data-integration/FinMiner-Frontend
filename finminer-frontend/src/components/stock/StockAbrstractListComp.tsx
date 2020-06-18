@@ -90,24 +90,20 @@ class StockAbstractListComp extends React.Component<any, any> {
   // menu展开时后的股票信息
   getStockDetailComp = (props: StockAbstractResponse) => {
     return (
-        <div>
+        <div style={{paddingTop: "8px"}}>
           <Row>
-
             <Col span={8}><Statistic title={props.industry} value={props.companyId} suffix={props.companyName} /></Col>
-
             <Col span={3}> <Statistic title={"开盘价"} value={props.open} suffix={"元"} /> </Col>
             <Col span={3}> <Statistic title={"最高价"} value={props.high} suffix={"元"} /> </Col>
-            <Col span={4}> <Statistic title={"成交量"} value={props.vol} suffix={"手"} /></Col>
+            <Col span={5}> <Statistic title={"成交量"} value={props.vol} suffix={"手"} /></Col>
             <Col span={4}> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(props.change).color}}
                                       suffix={props.change === 0 ? <MinusOutlined /> : props.change > 0 ?
                                           <ArrowUpOutlined /> :
                                           <ArrowDownOutlined />} value={props.change} /></Col>
             <Col span={8}> <Statistic title={"交易日期"} value={props.date.split("T")[0]} /></Col>
-
             <Col span={3}> <Statistic title={"收盘价"} value={props.close} suffix={"元"} /> </Col>
             <Col span={3}> <Statistic title={"最低价"} value={props.low} suffix={"元"} /> </Col>
-            <Col span={4}> <Statistic title={"成交额"} value={props.amount} suffix={"千元"} /></Col>
-
+            <Col span={5}> <Statistic title={"成交额"} value={props.amount} suffix={"千元"} /></Col>
             <Col span={4}> <Statistic title={"涨跌幅(未复权"} value={props.pct_chg} /></Col>
 
           </Row>
