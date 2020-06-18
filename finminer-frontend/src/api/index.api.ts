@@ -2,12 +2,12 @@ import globalAxios from "../config/server/axios";
 import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
-  StockResponse,
+  StockInfoResponse,
   StockKLineResponse, CompanyResponse, StockNetworkResponse
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
-export async function apiGetStockDetailById(companyId: string): Promise<BasicResponse<StockResponse>> {
+export async function apiGetStockInfoById(companyId: string): Promise<BasicResponse<StockInfoResponse>> {
   const {data} = await globalAxios.get("/stock/info", {
     params: {companyId}
   });

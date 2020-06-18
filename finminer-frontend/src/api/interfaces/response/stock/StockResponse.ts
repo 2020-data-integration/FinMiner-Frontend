@@ -19,19 +19,26 @@ export interface StockAbstractResponse {
   amount: number
 }
 
-export interface StockResponse {
+export interface StockInfoResponse {
   name: string,
   fullName: string,
   managers: [{
     manager_id: string
     manager_name: string
   }],
-  holders: [{
+  holders:[{
     holder_id: string
     holder_name: string
   }],
-  concept: [string], // 概念：卖点
+  concept: string[], // 概念：卖点
   industry: string,
+  announcement: Array<string>, // 公司公告，最近的5条
+  area: string,  // 地区
+  change_pct: number,   //每股收益增长率
+  net_asset: number,    // 净资产
+  total_asset: number,   //全部资产
+  profit_over_year: number,    // 营业利润同比
+  revenue_over_year: number,    // 营业总收入同比
   open: number,
   close: number,
   high: number,
@@ -39,13 +46,8 @@ export interface StockResponse {
   change: number,
   vol: number,
   amount: number,
-  announcement: Array<string>, // 公司公告，最近的5条
-  area: string,  // 地区
-  change_pct: number,   //每股收益增长率
-  net_asset: number,    // 净资产
-  total_asset: number,   //全部资产
-  profit_over_year: number,    // 营业利润同比
-  revenue_over_year: number    // 营业总收入同比
+  date: string,
+  pct_chg: number
 }
 
 export interface StockKLineResponse {

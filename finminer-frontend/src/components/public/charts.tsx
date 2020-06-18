@@ -5,7 +5,6 @@
  */
 import * as React from "react";
 import ReactEcharts from "echarts-for-react";
-import * as echarts from "echarts";
 import {StockKLineResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {chartsHeight, loadingOpt} from "../charts/chartsOpt";
 
