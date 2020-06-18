@@ -21,7 +21,7 @@ export interface StockAbstractResponse {
 
 export interface StockInfoResponse {
   name: string,
-  fullName: string,
+  company_name: string,
   managers: [{
     manager_id: string
     manager_name: string
@@ -32,8 +32,8 @@ export interface StockInfoResponse {
   }],
   concept: string[], // 概念：卖点
   industry: string,
-  announcement: Array<string>, // 公司公告，最近的5条
   area: string,  // 地区
+  announcement: string[],
   change_pct: number,   //每股收益增长率
   net_asset: number,    // 净资产
   total_asset: number,   //全部资产

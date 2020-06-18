@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../logo.svg";
 import "../App.css";
 
 
@@ -11,7 +10,8 @@ class Homepage extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          Welcome to Finminer
+          <div>解开你的财富密码</div>
         </header>
       </div>
 

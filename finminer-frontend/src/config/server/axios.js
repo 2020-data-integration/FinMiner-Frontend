@@ -13,7 +13,7 @@ import {message} from "antd";
 const globalAxios = axios.create({
   baseURL:
     process.env.NODE_ENV === "production" ?
-      "" : "http://47.101.33.219"
+      "http://47.101.33.219" : "http://47.101.33.219"
 });
 
 //添加一个请求拦截器

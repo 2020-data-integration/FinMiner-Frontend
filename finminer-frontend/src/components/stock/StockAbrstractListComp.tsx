@@ -115,7 +115,7 @@ class StockAbstractListComp extends React.Component<any, any> {
   getStockAbstractComp = (props: StockAbstractResponse) => {
     return (
         <div>
-          {props.companyId}{props.companyName}
+          {props.companyId}<span style={{marginLeft: 10}}>{props.companyName}</span>
         </div>
     );
   };
