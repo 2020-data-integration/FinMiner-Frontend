@@ -11,9 +11,9 @@ import StockNetworkComp from "../../components/stock/StockNetworkComp";
 export const RouteConfig = () => (
   <BrowserRouter>
     <PageHeader />
-    {/*<Route exact path='/' component={Homepage} />*/}
-    {/*<Route path='/dashboard' component={Dashboard} />*/}
-    {/*<Route path='/charts' component={Charts} />*/}
+    <Route exact path='/' component={Homepage} />
+    <Route path='/dashboard' component={Dashboard} />
+    <Route path='/charts' component={Charts} />
   </BrowserRouter>
 );
 

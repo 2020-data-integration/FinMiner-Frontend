@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import {Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {Layout, Menu} from "antd";
 import {ReactNode} from "react";
 import {RouteList} from "../../config/routes/index.route";
@@ -24,9 +24,6 @@ export class PageHeader extends React.Component<any, any> {
           </Menu>
         </Header>
         <Content style={{ marginTop: 64}}>
-          {RouteList.map((route)=>
-              <Route exact path={route.path} component={route.component}/>
-          )}
         </Content>
         </Layout>
 
