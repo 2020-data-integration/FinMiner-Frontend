@@ -6,13 +6,15 @@
 import {StockAbstractResponse} from "../../api/interfaces/response/stock/StockResponse";
 import * as React from "react";
 
-import {Layout, Menu, Breadcrumb} from "antd";
+import {Layout, Menu, Breadcrumb, Statistic, Row, Col} from "antd";
 import {apiGetStockAbstract} from "../../api/index.api";
 import {ClickParam} from "antd/lib/menu";
 import {DownOutlined} from "@ant-design/icons";
 import {Link, Route} from "react-router-dom";
 import {DashboardRouteList} from "../../config/routes/index.route";
 import {withRouter} from "react-router-dom";
+import {ArrowUpOutlined, ArrowDownOutlined, MinusOutlined} from "@ant-design/icons";
+import {valueStyle} from "../../utils/valueStyle";
 
 const {Header, Sider, Content} = Layout;
 
@@ -70,17 +72,6 @@ class StockAbstractListComp extends React.Component<any, any> {
 
   };
 
-  // 单个股票的数据面板组件
-  getStockAbstractComp = (props: StockAbstractResponse) => {
-    return (
-        <Menu.Item key={props.companyId}
-                   title={<div>title</div>}>
-          <div>
-            {props.companyId}{props.companyName}
-          </div>
-        </Menu.Item>
-    );
-  };
 
   componentDidMount(): void {
     this.getStockAbstractData(this.state.pageNum, this.pageSize);
@@ -95,27 +86,75 @@ class StockAbstractListComp extends React.Component<any, any> {
 
   }
 
+
+  // menu展开时后的股票信息
+  getStockDetailComp = (props: StockAbstractResponse) => {
+    return (
+        <div>
+          <Row>
+
+            <Col span={8}><Statistic title={props.industry} value={props.companyId} suffix={props.companyName} /></Col>
+
+            <Col span={3}> <Statistic title={"开盘价"} value={props.open} suffix={"元"} /> </Col>
+            <Col span={3}> <Statistic title={"最高价"} value={props.high} suffix={"元"} /> </Col>
+            <Col span={4}> <Statistic title={"成交量"} value={props.vol} suffix={"手"} /></Col>
+            <Col span={4}> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(props.change).color}}
+                                      suffix={props.change === 0 ? <MinusOutlined /> : props.change > 0 ?
+                                          <ArrowUpOutlined /> :
+                                          <ArrowDownOutlined />} value={props.change} /></Col>
+            <Col span={8}> <Statistic title={"交易日期"} value={props.date.split("T")[0]} /></Col>
+
+            <Col span={3}> <Statistic title={"收盘价"} value={props.close} suffix={"元"} /> </Col>
+            <Col span={3}> <Statistic title={"最低价"} value={props.low} suffix={"元"} /> </Col>
+            <Col span={4}> <Statistic title={"成交额"} value={props.amount} suffix={"千元"} /></Col>
+
+            <Col span={4}> <Statistic title={"涨跌幅(未复权"} value={props.pct_chg} /></Col>
+
+          </Row>
+        </div>
+    );
+  };
+
+  // menu收缩时的股票信息
+  getStockAbstractComp = (props: StockAbstractResponse) => {
+    return (
+        <div>
+          {props.companyId}{props.companyName}
+        </div>
+    );
+  };
+  // 单个股票的Menu组件
+  getStockMenuComp = (props: StockAbstractResponse) => {
+    return (
+        <Menu.Item key={props.companyId}
+                   style={this.state.isCollapsed ? {} : {height: "150px", borderBottom: "2px solid #1f1f1f"}}>
+          {this.state.isCollapsed ? this.getStockAbstractComp(props) : this.getStockDetailComp(props)}
+        </Menu.Item>
+    );
+  };
+
   render(): React.ReactNode {
+    const isCollapsed = this.state.isCollapsed;
     return (
         <Layout>
-          <Sider style={this.state.isCollapsed ? {
+          <Sider style={isCollapsed ? {
             overflow: "auto",
             height: "90vh",
             position: "fixed",
             left: 0,
           } : {}}>
-            <div style={this.state.isCollapsed ? {width: "195px"} : {width: "100vw"}}>
+            <div style={isCollapsed ? {width: "195px"} : {width: "100vw"}}>
               <Menu
                   mode={"inline"}
                   onClick={this.showDetail}
-                  inlineCollapsed={this.state.isCollapsed}>
-                {this.state.stockList.map(stock => this.getStockAbstractComp(stock))}
+                  inlineCollapsed={isCollapsed}>
+                {this.state.stockList.map(stock => this.getStockMenuComp(stock))}
                 <Menu.Item key="loading-key" icon={<DownOutlined />} style={{textAlign: "center"}} />
               </Menu>
             </div>
           </Sider>
           {
-            this.state.isCollapsed ?
+            isCollapsed ?
                 <Layout style={{marginLeft: 200, padding: "20px 30px",}}>
                   <Header>
                     <Breadcrumb style={{margin: "18px 0"}}>
@@ -127,7 +166,7 @@ class StockAbstractListComp extends React.Component<any, any> {
                       }
                     </Breadcrumb>
                   </Header>
-                  <Content style={{padding: '40px 0'}}>
+                  <Content style={{padding: "40px 0"}}>
                     {
                       DashboardRouteList(this.state.selectedStock).map((route) =>
                           <Route path={route.path} component={route.component} key={route.name} />)
