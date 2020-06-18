@@ -324,25 +324,25 @@ export function MapChart() {
     var nodes = []
     var links = []
     nodes=[
-        {category:0, name: '平安银行',symbolSize:50},
-        {category:0, name: '交通银行',symbolSize:50},
-        {category:0, name: '联邦集团',symbolSize:50},
-        {category:1, name: '王大佬',symbolSize:45},
-        {category:2, name: '史蒂夫-沃兹尼艾克',symbolSize:40},
-        {category:2, name: '奥巴马',symbolSize:40},
-        {category:2, name: '比尔-盖茨',symbolSize:40},
-        {category:2, name: '乔纳森-艾夫',symbolSize:40},
-        {category:3, name: '阿一古',symbolSize:40}
+        {category:0, id:'1',name: '平安银行'},
+        {category:0,id:'2', name: '交通银行'},
+        {category:0,id:'3', name: '联邦集团'},
+        {category:1, id:'4',name: '比尔-盖茨'},
+        {category:2,id:'5', name: '比尔-盖茨'},
+        {category:2,id:'6', name: '比尔-盖茨'},
+        {category:2, id:'7',name: '比尔-盖茨'},
+        {category:2,id:'8', name: '乔纳森-艾夫'},
+        {category:3,id:'9', name: '阿一古'}
     ]
     links=[
-            {source : '王大佬', target : '平安银行',value :'hold_stock'},
-            {source : '史蒂夫-沃兹尼艾克', target : '平安银行',value :'work_in'},
-            {source : '奥巴马', target : '平安银行',value :'work_in'},
-            {source : '比尔-盖茨', target : '平安银行',value :'work_in'},
-            {source : '乔纳森-艾夫', target : '平安银行',value:'work_in'},
-            {source : '交通银行', target : '平安银行',value:'hold_stock'},
-            {source : '交通银行', target : '联邦集团',value:'hold_stock'},
-            {source : '阿一古', target : '联邦集团',value:'hold_stock'},
+            {source : '4', target : '1',value :'hold_stock'},
+            {source : '5', target : '1',value :'work_in'},
+            {source : '6', target : '1',value :'work_in'},
+            {source : '7', target : '1',value :'work_in'},
+            {source : '8', target : '1',value:'work_in'},
+            {source : '2', target : '1',value:'hold_stock'},
+            {source : '2', target : '3',value:'hold_stock'},
+            {source : '9', target : '3',value:'hold_stock'},
         ]
     const categories= [
         {
@@ -351,28 +351,32 @@ export function MapChart() {
                 normal: {
                     color: '#c489e6'
                 }
-            }
+            },
+            symbolSize:50
         }, {
             name: 'Holder',
             itemStyle: {
                 normal: {
                     color: "#148b96"
                 }
-            }
+            },
+            symbolSize:45
         }, {
             name: 'Manager',
             itemStyle: {
                 normal: {
                     color: '#BC8F8F'
                 }
-            }
+            },
+            symbolSize:40
         }, {
             name: 'Concept',
             itemStyle: {
                 normal: {
                     color: '#72d5c3'
                 }
-            }
+            },
+            symbolSize:35
         }]
 
    const option = {

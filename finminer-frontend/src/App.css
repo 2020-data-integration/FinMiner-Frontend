@@ -119,7 +119,7 @@
   filter:grayscale(0);
 }
 .card-image {
-  height:250px;
+  height:350px;
   position:relative;
   overflow:hidden;
 }
