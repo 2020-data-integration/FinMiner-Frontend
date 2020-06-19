@@ -15,7 +15,8 @@ export class StockNetworkComp extends React.Component<any, any> {
   async getStockNetworkData(companyId: string) {
     const res = await apiGetStockNetworkById(companyId);
     this.setState({
-      networkData: res.data
+      nodes: res.data.nodes,
+      links: res.data.links
     });
   }
 

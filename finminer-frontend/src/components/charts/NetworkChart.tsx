@@ -11,28 +11,34 @@ export function NetworkChart(nodes: node[], links: link[]) {
         normal: {
           color: "#c489e6"
         }
-      }
+      },
+      symbolSize:50
     }, {
       name: "Holder",
       itemStyle: {
         normal: {
           color: "#148b96"
         }
-      }
+      },
+      symbolSize:45
+
     }, {
       name: "Manager",
       itemStyle: {
         normal: {
           color: "#BC8F8F"
         }
-      }
+      },
+      symbolSize:40
+
     }, {
       name: "Concept",
       itemStyle: {
         normal: {
           color: "#72d5c3"
         }
-      }
+      },
+      symbolSize:35
     }];
 
   const option = {
@@ -64,6 +70,7 @@ export function NetworkChart(nodes: node[], links: link[]) {
       {
         type: "graph",
         layout: "force",
+        layoutAnimation: false, // 因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画，在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。
         focusNodeAdjacency: true,
         roam: true,
         draggable: true,

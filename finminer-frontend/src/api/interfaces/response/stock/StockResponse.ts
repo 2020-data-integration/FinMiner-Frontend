@@ -61,8 +61,8 @@ export interface StockKLineResponse {
 
 export interface node {
   category: number, //0-Company,1-Holer,2-Manager
-  name: string,
-  symbolSize: number //节点大小，可固定，也可以动态
+  id: string,
+  name: string //节点大小，可固定，也可以动态
 }
 
 export interface link {
