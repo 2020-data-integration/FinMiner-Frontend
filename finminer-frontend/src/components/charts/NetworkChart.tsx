@@ -35,7 +35,7 @@ export function NetworkChart(nodes: node[], links: link[]) {
       name: "Concept",
       itemStyle: {
         normal: {
-          color: "#72d5c3"
+          color: "#CDBE70"
         }
       },
       symbolSize:35
