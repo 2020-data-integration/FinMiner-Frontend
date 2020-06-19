@@ -162,7 +162,7 @@ class StockAbstractListComp extends React.Component<any, any> {
                       }
                     </Breadcrumb>
                   </Header>
-                  <Content style={{padding: "40px 0"}}>
+                  <Content style={{paddingTop: 30}}>
                     {
                       DashboardRouteList(this.state.selectedStock).map((route) =>
                           <Route path={route.path} component={route.component} key={route.name} />)
