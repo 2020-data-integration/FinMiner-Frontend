@@ -24,58 +24,80 @@ class StockInfoComp extends React.Component<any, any> {
   }
 
   getAnnouncement = (infos: string[]) => {
-    return (<Timeline>
-      {
-        infos.map(info => <Timeline.Item>{info}</Timeline.Item>
-        )
-      }
-
-    </Timeline>);
+    return (
+        <Descriptions title={"公司公告"}>
+          <Timeline>
+            {
+              infos.map(info => <Timeline.Item>{info}</Timeline.Item>
+              )
+            }
+          </Timeline>
+        </Descriptions>
+    );
   };
 
   getBasicInfo = (info: StockInfoResponse) => {
     return (
         <Descriptions title={this.state.companyId}>
           <Descriptions.Item label={"简称"}>{info.name}</Descriptions.Item>
-          <Descriptions.Item label={"公司名"}>{info.company_name}</Descriptions.Item>
-          <Descriptions.Item label={"概念"}>
-            {info.concept.map((item) => <span>{item}/</span>)}
+          <Descriptions.Item label={"公司名"} span={2}>{info.company_name}</Descriptions.Item>
+          <Descriptions.Item label={"行业"}>{info.industry}</Descriptions.Item>
+          <Descriptions.Item label={"地区"} span={2}>{info.area}</Descriptions.Item>
+          <Descriptions.Item label={"概念"} span={3}>
+            {info.concept.map((item) => <Tag color={"lime"} style={{marginBottom: "10px"}}>{item}</Tag>)}
           </Descriptions.Item>
-          <Descriptions.Item label={"产业"}>{info.industry}</Descriptions.Item>
-          <Descriptions.Item label={"地区"}>{info.area}</Descriptions.Item>
-          <Descriptions.Item label={"高管"}>
-            {info.managers.map(manager => <span key={manager.manager_id}> <Tag color="cyan">{manager.manager_name}</Tag></span>)}
+          <Descriptions.Item label={"高管"} span={3}>
+            {info.managers.map(manager => <Tag color="cyan"
+                                               style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
           </Descriptions.Item>
-          <Descriptions.Item label={"持股人"}>
-            {info.holders.map(holder => <span key={holder.holder_id}><Tag
-                color={"blue"}>{holder.holder_name}</Tag></span>)}
+          <Descriptions.Item label={"持股人"} span={3}>
+            {info.holders.map(holder => <Tag
+                color={"blue"} style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
           </Descriptions.Item>
 
         </Descriptions>
     );
   };
 
-  getLastesStatistic = (info: StockInfoResponse) => {
+  getLatestStatistic = (info: StockInfoResponse) => {
     return (
-        <div>
-          <Statistic title={"交易日期"} value={info.date.split("T")[0]} />
+        <Descriptions column={4} title={<div>最新数据<Tag color={"default"}
+                                                      style={{marginLeft: "10px"}}>{info.date.split("T")[0]}</Tag>
+        </div>}>
+          <Descriptions.Item> <Statistic title={"开盘价"} value={info.open} suffix={"元"} /> </Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"最高价"} value={info.high} suffix={"元"} /> </Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"成交量"} value={info.vol} suffix={"手"} /></Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(info.change).color}}
+                                         suffix={info.change === 0 ? <MinusOutlined /> : info.change > 0 ?
+                                             <ArrowUpOutlined /> :
+                                             <ArrowDownOutlined />} value={info.change} /></Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"收盘价"} value={info.close} suffix={"元"} /> </Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"最低价"} value={info.low} suffix={"元"} /> </Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"成交额"} value={info.amount}
+                                         suffix={"千元"} /></Descriptions.Item>
 
-          <Row>
+          <Descriptions.Item> <Statistic title={"涨跌幅(未复权)"} valueStyle={{color: valueStyle(info.pct_chg).color}}
+                                         suffix={info.pct_chg === 0 ? <MinusOutlined /> : info.pct_chg > 0 ?
+                                             <ArrowUpOutlined /> :
+                                             <ArrowDownOutlined />} value={info.pct_chg} /></Descriptions.Item>
 
-            <Col span={4}> <Statistic title={"开盘价"} value={info.open} suffix={"元"} /> </Col>
-            <Col span={4}> <Statistic title={"最高价"} value={info.high} suffix={"元"} /> </Col>
-            <Col span={10}> <Statistic title={"成交量"} value={info.vol} suffix={"手"} /></Col>
-            <Col span={6}> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(info.change).color}}
-                                      suffix={info.change === 0 ? <MinusOutlined /> : info.change > 0 ?
-                                          <ArrowUpOutlined /> :
-                                          <ArrowDownOutlined />} value={info.change} /></Col>
-            <Col span={4}> <Statistic title={"收盘价"} value={info.close} suffix={"元"} /> </Col>
-            <Col span={4}> <Statistic title={"最低价"} value={info.low} suffix={"元"} /> </Col>
-            <Col span={10}> <Statistic title={"成交额"} value={info.amount} suffix={"千元"} /></Col>
-            <Col span={6}> <Statistic title={"涨跌幅(未复权"} value={info.pct_chg} /></Col>
+        </Descriptions>
+    );
+  };
 
-          </Row>
-        </div>
+  getFinanialReport = (info: StockInfoResponse) => {
+    return (
+        <Descriptions column={1} title={"公司财报"}>
+          <Descriptions.Item> <Statistic title={"每股收益增长率"} value={info.change_pct} /></Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"净资产"} value={info.net_asset} /></Descriptions.Item>
+
+          <Descriptions.Item> <Statistic title={"全部资产"} value={info.total_asset} /></Descriptions.Item>
+
+          <Descriptions.Item> <Statistic title={"营业利润同比"} value={info.profit_over_year} /></Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"营业总收入同比"} value={info.revenue_over_year} /></Descriptions.Item>
+
+
+        </Descriptions>
     );
   };
 
@@ -85,11 +107,17 @@ class StockInfoComp extends React.Component<any, any> {
         <div>
           {Object.keys(info).length === 0 ? <Spin /> :
               <div>
-                <Row>
-                  <Col span={12}>{this.getBasicInfo(info)}</Col>
-                  <Col span={12}>{this.getLastesStatistic(info)}</Col>
+                <Row gutter={8}>
+                  <Col span={18}>{this.getBasicInfo(info)}</Col>
+                  <Col span={6}>{this.getFinanialReport(info)}</Col>
+
                 </Row>
-                {this.getAnnouncement(info.announcement)}
+                <Row gutter={8}>
+                  {this.getLatestStatistic(info)}
+                </Row>
+                <Row style={{marginTop: "20px"}}>
+                  {this.getAnnouncement(info.announcement)}
+                </Row>
               </div>
           }
         </div>
