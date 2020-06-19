@@ -47,9 +47,8 @@ export function NetworkChart(nodes: node[], links: link[]) {
     },
     tooltip: {},
     legend: {
-      y: "5%",
       textStyle: {
-        fontSize: 18,//字体大小
+        fontSize: 10,//字体大小
         color: "#ffffff"//字体颜色
       },
       data: categories.map(function (a) {//显示策略
@@ -70,17 +69,18 @@ export function NetworkChart(nodes: node[], links: link[]) {
       {
         type: "graph",
         layout: "force",
-        layoutAnimation: false, // 因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画，在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。
+        force : {
+          gravity : 0.03,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
+          edgeLength :80,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
+          repulsion: 500,
+          layoutAnimation : false
+        },
         focusNodeAdjacency: true,
         roam: true,
         draggable: true,
         categories: categories,
         edgeSymbol: ["none", "arrow"],
         edgeSymbolSize: [1, 10],
-        force: {
-          repulsion: 2500,
-          edgeLength: [10, 50]
-        },
         label: {
           normal: {
             show: true,
