@@ -107,11 +107,16 @@ class StockInfoComp extends React.Component<any, any> {
         <div>
           {Object.keys(info).length === 0 ? <Spin /> :
               <div>
-                <Row gutter={8}>
-                  <Col span={18}>{this.getBasicInfo(info)}</Col>
-                  <Col span={6}>{this.getFinancialReport(info)}</Col>
+                {
+                  info.net_asset === null ?
+                      <Row>
+                        <Col>{this.getBasicInfo(info)}</Col>
+                      </Row> :
+                      <Row gutter={8}>
+                        <Col span={18}>{this.getBasicInfo(info)}</Col>
+                        <Col span={6}>{this.getFinancialReport(info)}</Col> </Row>
 
-                </Row>
+                }
                 <Row gutter={8}>
                   {this.getLatestStatistic(info)}
                 </Row>
