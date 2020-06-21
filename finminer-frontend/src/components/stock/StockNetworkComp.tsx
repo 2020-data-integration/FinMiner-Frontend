@@ -2,18 +2,19 @@ import * as React from "react";
 import {withRouter} from "react-router-dom";
 import {NetworkChart} from "../charts/NetworkChart";
 import {apiGetStockNetworkById} from "../../api/index.api";
-import {link, node} from "../../api/interfaces/response/stock/StockResponse";
+import {link, node, NodeCategory} from "../../api/interfaces/response/stock/StockResponse";
 
 
 export class StockNetworkComp extends React.Component<any, any> {
   state = {
     companyId: this.props.location.pathname.split("/")[2],
+    category: 0 as NodeCategory,
     nodes: [] as node[],
     links: [] as link[]
   };
 
-  async getStockNetworkData(companyId: string) {
-    const res = await apiGetStockNetworkById(companyId);
+  async getStockNetworkData(nodeId: string, category: NodeCategory) {
+    const res = await apiGetStockNetworkById(nodeId, category);
     this.setState({
       nodes: res.data.nodes,
       links: res.data.links
@@ -21,7 +22,7 @@ export class StockNetworkComp extends React.Component<any, any> {
   }
 
   componentDidMount(): void {
-    this.getStockNetworkData(this.state.companyId);
+    this.getStockNetworkData(this.state.companyId, this.state.category);
   }
 
   render(): React.ReactNode {

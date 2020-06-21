@@ -4,7 +4,7 @@ import {StockInfoResponse} from "../../api/interfaces/response/stock/StockRespon
 import {apiGetStockInfoById} from "../../api/index.api";
 import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
-import {ArrowUpOutlined, ArrowDownOutlined, MinusOutlined} from "@ant-design/icons";
+import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 
 class StockInfoComp extends React.Component<any, any> {
   state = {
@@ -72,7 +72,7 @@ class StockInfoComp extends React.Component<any, any> {
           <Descriptions.Item> <Statistic title={"最高价"} value={info.high} suffix={"元"} /> </Descriptions.Item>
           <Descriptions.Item> <Statistic title={"成交量"} value={info.vol} suffix={"手"} /></Descriptions.Item>
           <Descriptions.Item> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(info.change).color}}
-                                         suffix={info.change === 0 ? <MinusOutlined /> : info.change > 0 ?
+                                         suffix={info.change === 0 ? "": info.change > 0 ?
                                              <ArrowUpOutlined /> :
                                              <ArrowDownOutlined />} value={info.change} /></Descriptions.Item>
           <Descriptions.Item> <Statistic title={"收盘价"} value={info.close} suffix={"元"} /> </Descriptions.Item>
@@ -81,7 +81,7 @@ class StockInfoComp extends React.Component<any, any> {
                                          suffix={"千元"} /></Descriptions.Item>
 
           <Descriptions.Item> <Statistic title={"涨跌幅(未复权)"} valueStyle={{color: valueStyle(info.pct_chg).color}}
-                                         suffix={info.pct_chg === 0 ? <MinusOutlined /> : info.pct_chg > 0 ?
+                                         suffix={info.pct_chg === 0 ? "" : info.pct_chg > 0 ?
                                              <ArrowUpOutlined /> :
                                              <ArrowDownOutlined />} value={info.pct_chg} /></Descriptions.Item>
 

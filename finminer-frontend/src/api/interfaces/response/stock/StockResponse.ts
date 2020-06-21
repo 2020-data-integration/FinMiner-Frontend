@@ -26,7 +26,7 @@ export interface StockInfoResponse {
     manager_id: string
     manager_name: string
   }],
-  holders:[{
+  holders: [{
     holder_id: string
     holder_name: string
   }],
@@ -77,8 +77,10 @@ export interface StockNetworkResponse {
   links: link[]
 }
 
-export interface CompanyResponse{
-  date:string,
+export type NodeCategory = 0 | 1 | 2 | 3
+
+export interface CompanyResponse {
+  date: string,
   companyId: string,
   companyName: string,
   industry: string,

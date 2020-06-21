@@ -3,7 +3,7 @@ import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
   StockInfoResponse,
-  StockKLineResponse, CompanyResponse, StockNetworkResponse, GdpResponse
+  StockKLineResponse, CompanyResponse, StockNetworkResponse, GdpResponse, NodeCategory
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
@@ -31,15 +31,15 @@ export async function apiGetStockAbstract(pageNum: number, pageSize: number): Pr
 }
 
 // 接口5. 获取股票知识图谱
-export async function apiGetStockNetworkById(companyId: string): Promise<BasicResponse<StockNetworkResponse>> {
+export async function apiGetStockNetworkById(nodeId: string, category: NodeCategory): Promise<BasicResponse<StockNetworkResponse>> {
   const {data} = await globalAxios.get("/stock/roadmap", {
-    params: {companyId}
+    params: {nodeId, category}
   });
   return data;
 }
 
 // 接口6. 获取全国GDP
-export async function apiGetGdp():Promise<BasicResponse<GdpResponse[]>>{
+export async function apiGetGdp(): Promise<BasicResponse<GdpResponse[]>> {
   const {data} = await globalAxios.get("/gdp");
   return data;
 }

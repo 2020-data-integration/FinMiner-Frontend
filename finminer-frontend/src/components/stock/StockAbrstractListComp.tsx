@@ -13,7 +13,7 @@ import {DownOutlined} from "@ant-design/icons";
 import {Link, Route} from "react-router-dom";
 import {DashboardRouteList} from "../../config/routes/index.route";
 import {withRouter} from "react-router-dom";
-import {ArrowUpOutlined, ArrowDownOutlined, MinusOutlined} from "@ant-design/icons";
+import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 import {valueStyle} from "../../utils/valueStyle";
 
 const {Header, Sider, Content} = Layout;
@@ -97,7 +97,7 @@ class StockAbstractListComp extends React.Component<any, any> {
             <Col span={3}> <Statistic title={"最高价"} value={props.high} suffix={"元"} /> </Col>
             <Col span={5}> <Statistic title={"成交量"} value={props.vol} suffix={"手"} /></Col>
             <Col span={4}> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(props.change).color}}
-                                      suffix={props.change === 0 ? <MinusOutlined /> : props.change > 0 ?
+                                      suffix={props.change === 0 ? "" : props.change > 0 ?
                                           <ArrowUpOutlined /> :
                                           <ArrowDownOutlined />} value={props.change} /></Col>
             <Col span={8}> <Statistic title={"交易日期"} value={props.date.split("T")[0]} /></Col>
@@ -105,7 +105,7 @@ class StockAbstractListComp extends React.Component<any, any> {
             <Col span={3}> <Statistic title={"最低价"} value={props.low} suffix={"元"} /> </Col>
             <Col span={5}> <Statistic title={"成交额"} value={props.amount} suffix={"千元"} /></Col>
             <Col span={4}> <Statistic title={"涨跌幅(未复权"} valueStyle={{color: valueStyle(props.pct_chg).color}}
-                                      suffix={props.pct_chg === 0 ? <MinusOutlined /> : props.change > 0 ?
+                                      suffix={props.pct_chg === 0 ? "" : props.change > 0 ?
                                           <ArrowUpOutlined /> :
                                           <ArrowDownOutlined />} value={props.pct_chg} /></Col>
 
