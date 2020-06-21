@@ -44,7 +44,7 @@ class StockInfoComp extends React.Component<any, any> {
           <Descriptions.Item label={"行业"}>{info.industry}</Descriptions.Item>
           <Descriptions.Item label={"地区"} span={2}>{info.area}</Descriptions.Item>
           <Descriptions.Item label={"概念"} span={3}>
-            {info.concept.map((item) => <Tag color={"lime"} style={{marginBottom: "10px"}}>{item}</Tag>)}
+            {info.concept.map((item) => <Tag color={"warning"} style={{marginBottom: "10px"}}>{item}</Tag>)}
           </Descriptions.Item>
           <Descriptions.Item label={"高管"} span={3}>
             {info.managers.map(manager => <Tag color="cyan"
@@ -85,7 +85,7 @@ class StockInfoComp extends React.Component<any, any> {
     );
   };
 
-  getFinanialReport = (info: StockInfoResponse) => {
+  getFinancialReport = (info: StockInfoResponse) => {
     return (
         <Descriptions column={1} title={"公司财报"}>
           <Descriptions.Item> <Statistic title={"每股收益增长率"} value={info.change_pct} /></Descriptions.Item>
@@ -109,7 +109,7 @@ class StockInfoComp extends React.Component<any, any> {
               <div>
                 <Row gutter={8}>
                   <Col span={18}>{this.getBasicInfo(info)}</Col>
-                  <Col span={6}>{this.getFinanialReport(info)}</Col>
+                  <Col span={6}>{this.getFinancialReport(info)}</Col>
 
                 </Row>
                 <Row gutter={8}>

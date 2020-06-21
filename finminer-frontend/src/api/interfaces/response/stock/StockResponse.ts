@@ -91,3 +91,8 @@ export interface CompanyResponse{
   vol: number,
   amount: number
 }
+
+export interface GdpResponse {
+  name: string,
+  value: number
+}

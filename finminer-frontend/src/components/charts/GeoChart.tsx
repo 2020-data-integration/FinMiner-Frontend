@@ -2,15 +2,11 @@ import * as echarts from "echarts";
 import geojson from "../../utils/geojson.json";
 import ReactEcharts from "echarts-for-react";
 import * as React from "react";
+import {GdpResponse} from "../../api/interfaces/response/stock/StockResponse";
+import {loadingOpt} from "./chartsOpt";
 
-export function GeoChart() {
+export function GeoChart(data: GdpResponse[]) {
   echarts.registerMap("China", geojson);
-  console.log(geojson.features.map((feature) => (
-      {
-        name: feature.properties.name,
-        value: Math.round(Math.random() * 1000)
-      }
-  )));
   const option = {
     title: {
       text: "中国各省GDP",
@@ -32,9 +28,9 @@ export function GeoChart() {
       }
     },
     visualMap: {
-      min: 50,
-      max: 1000,
-      text: ["High", "Low"],
+      min: data.length === 0 ? 500 : Math.min.call(null, ...data.map(d => d.value)),
+      max: data.length === 0 ? 5000 : Math.max.call(null, ...data.map(d => d.value)),
+      text: ["Max", "Min"],
       realtime: false,
       calculable: true,
       inRange: {
@@ -57,17 +53,13 @@ export function GeoChart() {
             areaColor: "#b2ffeb"
           }
         },
-        data: geojson.features.map((feature) => (
-            {
-              name: feature.properties.name,
-              value: Math.round(Math.random() * 1000)
-            }
-        ))
+        data: data
       }
     ]
   };
   return (
       // @ts-ignore
-      <ReactEcharts option={option} style={{"height": 'calc(100vh - 64px)'}} />
-);
+      <ReactEcharts option={option} showLoading={data.length === 0} loadingOption={loadingOpt}
+                    style={{"height": "calc(100vh - 64px)"}} />
+  );
 }
