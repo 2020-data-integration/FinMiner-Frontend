@@ -28,7 +28,7 @@ class StockInfoComp extends React.Component<any, any> {
         <Descriptions title={"公司公告"}>
           <Timeline>
             {
-              infos.map(info => <Timeline.Item>{info}</Timeline.Item>
+              infos.map(info => <Timeline.Item key={info}>{info}</Timeline.Item>
               )
             }
           </Timeline>
@@ -44,15 +44,15 @@ class StockInfoComp extends React.Component<any, any> {
           <Descriptions.Item label={"行业"}>{info.industry}</Descriptions.Item>
           <Descriptions.Item label={"地区"} span={2}>{info.area}</Descriptions.Item>
           <Descriptions.Item label={"概念"} span={3}>
-            {info.concept.map((item) => <Tag color={"warning"} style={{marginBottom: "10px"}}>{item}</Tag>)}
+            {info.concept.map((item) => <Tag key={item} color={"warning"} style={{marginBottom: "10px"}}>{item}</Tag>)}
           </Descriptions.Item>
           <Descriptions.Item label={"高管"} span={3}>
-            {info.managers.map(manager => <Tag color="cyan"
-                                               style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
+            {info.managers.map(manager =>
+                <Tag key={manager.manager_id} color="cyan" style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
           </Descriptions.Item>
           <Descriptions.Item label={"持股人"} span={3}>
-            {info.holders.map(holder => <Tag
-                color={"blue"} style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
+            {info.holders.map(holder =>
+                <Tag key={holder.holder_id} color={"blue"} style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
           </Descriptions.Item>
 
         </Descriptions>
@@ -61,9 +61,13 @@ class StockInfoComp extends React.Component<any, any> {
 
   getLatestStatistic = (info: StockInfoResponse) => {
     return (
-        <Descriptions column={4} title={<div>最新数据<Tag color={"default"}
-                                                      style={{marginLeft: "10px"}}>{info.date.split("T")[0]}</Tag>
-        </div>}>
+        <Descriptions column={4}
+                      title={
+                        <div>最新数据
+                          <Tag color={"default"}
+                               style={{marginLeft: "10px"}}>
+                            {info.date.split("T")[0]}</Tag>
+                        </div>}>
           <Descriptions.Item> <Statistic title={"开盘价"} value={info.open} suffix={"元"} /> </Descriptions.Item>
           <Descriptions.Item> <Statistic title={"最高价"} value={info.high} suffix={"元"} /> </Descriptions.Item>
           <Descriptions.Item> <Statistic title={"成交量"} value={info.vol} suffix={"手"} /></Descriptions.Item>
