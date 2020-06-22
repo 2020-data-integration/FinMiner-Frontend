@@ -1,9 +1,10 @@
-import ReactEcharts from "echarts-for-react";
 import * as React from "react";
+import * as echarts from "echarts";
 import {link, node} from "../../api/interfaces/response/stock/StockResponse";
 import {chartsHeight, loadingOpt} from "./chartsOpt";
+import ReactEcharts from "echarts-for-react";
 
-export function NetworkChart(nodes: node[], links: link[]) {
+export function NetworkChart(nodes: node[], links: link[], updateNetworkData: Function) {
   const categories = [
     {
       name: "Company",
@@ -12,7 +13,7 @@ export function NetworkChart(nodes: node[], links: link[]) {
           color: "#c489e6"
         }
       },
-      symbolSize:50
+      symbolSize: 50
     }, {
       name: "Holder",
       itemStyle: {
@@ -20,7 +21,7 @@ export function NetworkChart(nodes: node[], links: link[]) {
           color: "#148b96"
         }
       },
-      symbolSize:45
+      symbolSize: 45
 
     }, {
       name: "Manager",
@@ -29,7 +30,7 @@ export function NetworkChart(nodes: node[], links: link[]) {
           color: "#BC8F8F"
         }
       },
-      symbolSize:40
+      symbolSize: 40
 
     }, {
       name: "Concept",
@@ -38,7 +39,7 @@ export function NetworkChart(nodes: node[], links: link[]) {
           color: "#CDBE70"
         }
       },
-      symbolSize:35
+      symbolSize: 35
     }];
 
   const option = {
@@ -69,11 +70,11 @@ export function NetworkChart(nodes: node[], links: link[]) {
       {
         type: "graph",
         layout: "force",
-        force : {
-          gravity : 0.03,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
-          edgeLength :80,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
+        force: {
+          gravity: 0.03,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
+          edgeLength: 80,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
           repulsion: 500,
-          layoutAnimation : false
+          layoutAnimation: false
         },
         focusNodeAdjacency: true,
         roam: true,
@@ -115,8 +116,17 @@ export function NetworkChart(nodes: node[], links: link[]) {
     ]
 
   };
+  // const myChart = echarts.init(chart());
+  // if (nodes.length === 0) {
+  //   myChart.showLoading("default", loadingOpt);
+  // } else {
+  //   myChart.hideLoading();
+  // }
+  // myChart.on("click", (params: any) => console.log(params));
+  // // @ts-ignore
+  // myChart.setOption(option);
   return (
       // @ts-ignore
-      <ReactEcharts option={option} showLoading={nodes.length===0} loadingOption={loadingOpt} style={chartsHeight}/>
+      <ReactEcharts option={option} showLoading={nodes.length === 0} loadingOption={loadingOpt} style={chartsHeight} />
   );
 }

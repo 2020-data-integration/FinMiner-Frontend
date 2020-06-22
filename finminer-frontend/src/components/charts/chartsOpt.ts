@@ -3,7 +3,6 @@ export const loadingOpt = {
   color: "#88ffe9",
   textColor: "black",
   maskColor: "rgba(0, 0, 0, 0.8)",
-  zlevel: 0,
 
   // 字体大小。从 `v4.8.0` 开始支持。
   fontSize: 12,
