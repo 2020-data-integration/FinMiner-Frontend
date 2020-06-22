@@ -1,48 +1,61 @@
 import * as React from "react";
 import * as echarts from "echarts";
 import {link, node} from "../../api/interfaces/response/stock/StockResponse";
-import {chartsHeight, loadingOpt} from "./chartsOpt";
-import ReactEcharts from "echarts-for-react";
+import {chartsHeight} from "./chartsOpt";
 
-export function NetworkChart(nodes: node[], links: link[], updateNetworkData: Function) {
-  const categories = [
-    {
-      name: "Company",
-      itemStyle: {
-        normal: {
-          color: "#c489e6"
-        }
-      },
-      symbolSize: 50
-    }, {
-      name: "Holder",
-      itemStyle: {
-        normal: {
-          color: "#148b96"
-        }
-      },
-      symbolSize: 45
 
-    }, {
-      name: "Manager",
-      itemStyle: {
-        normal: {
-          color: "#BC8F8F"
-        }
-      },
-      symbolSize: 40
+export const categories = [
+  {
+    name: "Company",
+    itemStyle: {
+      normal: {
+        color: "#c489e6"
+      }
+    },
+    symbolSize: 50
+  }, {
+    name: "Holder",
+    itemStyle: {
+      normal: {
+        color: "#148b96"
+      }
+    },
+    symbolSize: 45
 
-    }, {
-      name: "Concept",
-      itemStyle: {
-        normal: {
-          color: "#CDBE70"
-        }
-      },
-      symbolSize: 35
-    }];
+  }, {
+    name: "Manager",
+    itemStyle: {
+      normal: {
+        color: "#BC8F8F"
+      }
+    },
+    symbolSize: 40
 
-  const option = {
+  }, {
+    name: "Concept",
+    itemStyle: {
+      normal: {
+        color: "#CDBE70"
+      }
+    },
+    symbolSize: 35
+  }];
+
+interface Network {
+  nodes: node[],
+  links: link[],
+  updateNetworkData: Function,
+  loading: Boolean
+}
+
+
+export class NetworkChart extends React.Component<Network, any> {
+  constructor(props: Network) {
+    super(props);
+  }
+
+  chartRef = React.createRef();
+  option = {
     title: {
       text: ""
     },
@@ -97,8 +110,8 @@ export function NetworkChart(nodes: node[], links: link[], updateNetworkData: Fu
           shadowBlur: 10,
           shadowColor: "rgba(0, 0, 0, 0.3)"
         },
-        data: nodes,
-        links: links,
+        data: this.props.nodes,
+        links: this.props.links,
         lineStyle: {
           normal: {
             opacity: 0.9,
@@ -116,17 +129,30 @@ export function NetworkChart(nodes: node[], links: link[], updateNetworkData: Fu
     ]
 
   };
-  // const myChart = echarts.init(chart());
-  // if (nodes.length === 0) {
-  //   myChart.showLoading("default", loadingOpt);
-  // } else {
-  //   myChart.hideLoading();
-  // }
-  // myChart.on("click", (params: any) => console.log(params));
-  // // @ts-ignore
-  // myChart.setOption(option);
-  return (
-      // @ts-ignore
-      <ReactEcharts option={option} showLoading={nodes.length === 0} loadingOption={loadingOpt} style={chartsHeight} />
-  );
+
+  componentDidMount(): void {
+    let myChart = echarts.init(this.chartRef.current as HTMLDivElement);
+    // @ts-ignore
+    myChart.setOption(this.option);
+    console.log(this.option.series[0].data.length);
+    myChart.on("click", (params: any) => {
+      console.log(params);
+      this.props.updateNetworkData(params.data.id, params.data.category);
+    });
+  }
+
+
+  render(): React.ReactNode {
+    return (
+        // @ts-ignore
+        <div ref={this.chartRef} style={chartsHeight} />
+        // @ts-ignore
+        // /*<ReactEcharts option={this.option}*/}
+        //               {/*ref={"network"}*/}
+        //               {/*showLoading={this.props.nodes.length === 0} loadingOption={loadingOpt}*/}
+        //               {/*style={chartsHeight} />*/
+    );
+  }
+
+
 }
