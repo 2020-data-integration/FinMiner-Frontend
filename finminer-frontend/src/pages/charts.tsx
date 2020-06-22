@@ -1,9 +1,10 @@
 import React from "react";
 import {GeoChart} from "../components/charts/GeoChart";
 import {apiGetCompanyRankByArea, apiGetGdp} from "../api/index.api";
-import {Drawer, Spin, List, Avatar, Statistic} from "antd";
+import {Drawer, Spin, List, Avatar, Statistic, Descriptions} from "antd";
 import {CompanyResponse} from "../api/interfaces/response/stock/StockResponse";
-import {rankStyle} from "../utils/valueStyle";
+import {rankStyle, valueStyle} from "../utils/valueStyle";
+import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons/lib";
 
 class Charts extends React.Component {
 
@@ -59,8 +60,25 @@ class Charts extends React.Component {
                         title={info.companyId}
                         description={info.companyName}
         />
-        <Statistic title={"总资产"} value={info.total_asset} />
-        <Statistic title={"股价"} value={info.close} />
+        <Descriptions column={4} style={{marginLeft: "30px"}}>
+          <Descriptions.Item span={2}> <Statistic title={"总资产"}
+                                                  value={info.total_asset === 0 ? "暂无数据" : info.total_asset}
+                                                  valueStyle={{fontSize: "15px"}}
+          /></Descriptions.Item>
+          <Descriptions.Item> <Statistic title={"股价"} value={info.close}
+                                         valueStyle={{fontSize: "15px"}}
+
+          /></Descriptions.Item>
+
+          <Descriptions.Item> <Statistic title={"涨跌幅"}
+                                         valueStyle={{fontSize: "15px", color: valueStyle(info.pct_chg).color}}
+                                         suffix={info.pct_chg === 0 ? "" : info.pct_chg > 0 ?
+                                             <ArrowUpOutlined /> :
+                                             <ArrowDownOutlined />}
+                                         value={info.pct_chg}
+
+          /></Descriptions.Item>
+        </Descriptions>
       </List.Item>
   );
 
