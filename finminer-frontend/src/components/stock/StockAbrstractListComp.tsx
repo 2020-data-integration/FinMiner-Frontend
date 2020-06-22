@@ -6,7 +6,7 @@
 import {StockAbstractResponse} from "../../api/interfaces/response/stock/StockResponse";
 import * as React from "react";
 
-import {Layout, Menu, Breadcrumb, Statistic, Row, Col} from "antd";
+import {Layout, Menu, Statistic, Row, Col, Tabs} from "antd";
 import {apiGetStockAbstract} from "../../api/index.api";
 import {ClickParam} from "antd/lib/menu";
 import {DownOutlined} from "@ant-design/icons";
@@ -16,7 +16,8 @@ import {withRouter} from "react-router-dom";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 import {valueStyle} from "../../utils/valueStyle";
 
-const {Header, Sider, Content} = Layout;
+const {Sider} = Layout;
+const {TabPane} = Tabs;
 
 class StockAbstractListComp extends React.Component<any, any> {
   state = {
@@ -155,22 +156,21 @@ class StockAbstractListComp extends React.Component<any, any> {
           {
             isCollapsed ?
                 <Layout style={{marginLeft: 200, padding: "20px 30px",}}>
-                  <Header>
-                    <Breadcrumb style={{margin: "18px 0"}}>
-                      {
-                        DashboardRouteList(this.state.selectedStock).map((route) =>
-                            <Breadcrumb.Item key={route.name}>
-                              <Link to={route.path}>{route.name}</Link>
-                            </Breadcrumb.Item>)
-                      }
-                    </Breadcrumb>
-                  </Header>
-                  <Content style={{paddingTop: 30}}>
+                  <Tabs defaultActiveKey="基本信息">
                     {
                       DashboardRouteList(this.state.selectedStock).map((route) =>
-                          <Route path={route.path} component={route.component} key={route.name} />)
+                          <TabPane tab={<Link to={route.path}>{route.name}</Link>}
+                                   key={route.name}
+                                   style={{marginTop: "10px"}}
+                          >
+                            <div id={"chart"}>
+                              <Route path={route.path} component={route.component} />
+                            </div>
+                          </TabPane>
+                      )
                     }
-                  </Content>
+                  </Tabs>
+
                 </Layout>
                 : <></>
           }

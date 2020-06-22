@@ -44,15 +44,15 @@ class StockInfoComp extends React.Component<any, any> {
           <Descriptions.Item label={"行业"}>{info.industry}</Descriptions.Item>
           <Descriptions.Item label={"地区"} span={2}>{info.area}</Descriptions.Item>
           <Descriptions.Item label={"概念"} span={3}>
-            {info.concept.map((item) => <Tag key={item} color={"warning"} style={{marginBottom: "10px"}}>{item}</Tag>)}
+            {info.concept.map((item) => <Tag key={item} color={"gold"} style={{marginBottom: "10px"}}>{item}</Tag>)}
           </Descriptions.Item>
           <Descriptions.Item label={"高管"} span={3}>
             {info.managers.map(manager =>
-                <Tag key={manager.manager_id} color="cyan" style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
+                <Tag key={manager.manager_id} color={"yellow"} style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
           </Descriptions.Item>
           <Descriptions.Item label={"持股人"} span={3}>
             {info.holders.map(holder =>
-                <Tag key={holder.holder_id} color={"blue"} style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
+                <Tag key={holder.holder_id} color={"cyan"} style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
           </Descriptions.Item>
 
         </Descriptions>
