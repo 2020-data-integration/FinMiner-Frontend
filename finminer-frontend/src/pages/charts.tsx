@@ -84,7 +84,7 @@ class Charts extends React.Component {
 
   render() {
     return (
-        <div>
+        <div style={{marginTop: "20px"}}>
           {this.state.gdpData.length === 0 ? <Spin /> :
               <GeoChart data={this.state.gdpData}
                         showCompanyRank={this.openDrawer}

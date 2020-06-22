@@ -25,7 +25,11 @@ export class GeoChart extends React.Component<Geo, any> {
   option = {
     title: {
       text: "中国各省GDP",
-      subtext: "数据来源：中国国家统计局",
+      subtext: "点击查看各省上市企业排名",
+      left: "center",
+      textStyle: {
+        color: "#92d0c0"
+      }
     },
     tooltip: {
       trigger: "item",
@@ -95,8 +99,8 @@ export class GeoChart extends React.Component<Geo, any> {
                       loadingOption={loadingOpt}
                       style={this.props.openDrawer ? {
                         "width": "60vw",
-                        "height": "calc(100vh - 64px)"
-                      } : {"height": "calc(100vh - 64px)"}}
+                        "height": "calc(100vh - 84px)"
+                      } : {"height": "calc(100vh - 84px)"}}
         />
         //<ReactEcharts option={option} showLoading={data.length === 0} loadingOption={loadingOpt}
         //              style={{"height": "calc(100vh - 64px)"}} />
