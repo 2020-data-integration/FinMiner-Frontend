@@ -134,7 +134,7 @@ export class NetworkChart extends React.Component<Network, any> {
     let myChart = echarts.init(this.chartRef.current as HTMLDivElement);
     // @ts-ignore
     myChart.setOption(this.option);
-    console.log(this.option.series[0].data.length);
+    // echarts点击事件，通过向父组件传递参数来更新数据，从而更新视图
     myChart.on("click", (params: any) => {
       console.log(params);
       this.props.updateNetworkData(params.data.id, params.data.category);
@@ -146,11 +146,6 @@ export class NetworkChart extends React.Component<Network, any> {
     return (
         // @ts-ignore
         <div ref={this.chartRef} style={chartsHeight} />
-        // @ts-ignore
-        // /*<ReactEcharts option={this.option}*/}
-        //               {/*ref={"network"}*/}
-        //               {/*showLoading={this.props.nodes.length === 0} loadingOption={loadingOpt}*/}
-        //               {/*style={chartsHeight} />*/
     );
   }
 

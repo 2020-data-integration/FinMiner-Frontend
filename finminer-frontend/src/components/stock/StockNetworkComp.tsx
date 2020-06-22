@@ -32,6 +32,7 @@ export class StockNetworkComp extends React.Component<any, any> {
 
 
   updateNetworkData = (nodeId: string, category: NodeCategory) => {
+    // TODO 数据更新函数 需要在该函数或者getStockNetworkData函数里实现数据合并
     this.setState({
           loading: true
         }, () => this.getStockNetworkData(nodeId, category)
