@@ -1,11 +1,16 @@
 import React from "react";
 import {GeoChart} from "../components/charts/GeoChart";
-import {apiGetGdp} from "../api/index.api";
+import {apiGetCompanyRankByArea, apiGetGdp} from "../api/index.api";
+import {Drawer, Spin} from "antd";
+import {CompanyResponse} from "../api/interfaces/response/stock/StockResponse";
 
 class Charts extends React.Component {
 
   state = {
-    gdpData: []
+    gdpData: [],
+    showDrawer: false,
+    selectedArea: "",
+    companyRanks: [] as CompanyResponse[]
   };
 
   componentDidMount() {
@@ -20,10 +25,37 @@ class Charts extends React.Component {
     }, () => console.log(this.state.gdpData));
   }
 
+  async getCompanyRankByArea() {
+    const res = await apiGetCompanyRankByArea(this.state.selectedArea);
+    this.setState({
+      companyRanks: res.data
+    });
+  }
+
+  openDrawer = (area: string) => {
+    console.log(area);
+    this.setState({
+      showDrawer: true,
+      selectedArea: area
+    });
+    this.getCompanyRankByArea();
+  };
+
+  closeDrawer = () => {
+    this.setState({
+      showDrawer: false
+    });
+  };
+
   render() {
     return (
         <div>
-          {GeoChart(this.state.gdpData)}
+          {this.state.gdpData.length === 0 ? <Spin /> :
+              <GeoChart data={this.state.gdpData} showCompanyRank={this.openDrawer} />
+          }
+          <Drawer visible={this.state.showDrawer} closable={false} onClose={this.closeDrawer}>
+            {this.state.companyRanks.map((info) => info.companyName)}
+          </Drawer>
         </div>
     );
   }

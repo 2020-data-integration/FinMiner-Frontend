@@ -1,13 +1,27 @@
 import * as echarts from "echarts";
 import geojson from "../../utils/geojson.json";
-import ReactEcharts from "echarts-for-react";
 import * as React from "react";
 import {GdpResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {loadingOpt} from "./chartsOpt";
+import ReactEcharts from "echarts-for-react";
+import {createRef} from "react";
 
-export function GeoChart(data: GdpResponse[]) {
-  echarts.registerMap("China", geojson);
-  const option = {
+
+interface Geo {
+  data: GdpResponse[],
+  showCompanyRank: Function
+}
+
+export class GeoChart extends React.Component<Geo, any> {
+  private chartRef: any;
+
+  constructor(props: Geo) {
+    super(props);
+    this.chartRef = createRef();
+  }
+
+
+  option = {
     title: {
       text: "中国各省GDP",
       subtext: "数据来源：中国国家统计局",
@@ -28,8 +42,8 @@ export function GeoChart(data: GdpResponse[]) {
       }
     },
     visualMap: {
-      min: data.length === 0 ? 500 : Math.min.call(null, ...data.map(d => d.value)),
-      max: data.length === 0 ? 5000 : Math.max.call(null, ...data.map(d => d.value)),
+      min: this.props.data.length === 0 ? 500 : Math.min.call(null, ...this.props.data.map(d => d.value)),
+      max: this.props.data.length === 0 ? 5000 : Math.max.call(null, ...this.props.data.map(d => d.value)),
       text: ["Max", "Min"],
       realtime: false,
       calculable: true,
@@ -53,13 +67,30 @@ export function GeoChart(data: GdpResponse[]) {
             areaColor: "#b2ffeb"
           }
         },
-        data: data
+        data: this.props.data
       }
     ]
   };
-  return (
-      // @ts-ignore
-      <ReactEcharts option={option} showLoading={data.length === 0} loadingOption={loadingOpt}
-                    style={{"height": "calc(100vh - 64px)"}} />
-  );
+
+  componentDidMount(): void {
+    // @ts-ignore
+    let echartsInstance = this.chartRef.getEchartsInstance();
+    echarts.registerMap("China", geojson);
+    echartsInstance.on("click", (params: any) => {
+      if (params.data !== undefined) {
+        this.props.showCompanyRank(params.data.name);
+      }
+    });
+  }
+
+  render(): React.ReactNode {
+    return (
+        // @ts-ignore
+        <ReactEcharts option={this.option} ref={(e) => {this.chartRef = e;}}
+                      showLoading={this.props.data.length === 0} style={{"height": "calc(100vh - 64px)"}} />
+        //<ReactEcharts option={option} showLoading={data.length === 0} loadingOption={loadingOpt}
+        //              style={{"height": "calc(100vh - 64px)"}} />
+    );
+  }
+
 }
