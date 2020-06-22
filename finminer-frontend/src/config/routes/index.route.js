@@ -42,16 +42,19 @@ export function DashboardRouteList(companyId) {
     {
       path: basicPath + "/info",
       name: "基本信息",
+      key: "info",
       component: StockInfoComp
     },
     {
       path: basicPath + "/candlestick",
       name: "K线图",
+      key:"candlestick",
       component: StockCandlestickComp
     },
     {
       path: basicPath + "/network",
       name: "知识图谱",
+      key: "network",
       component: StockNetworkComp
     }
   ];

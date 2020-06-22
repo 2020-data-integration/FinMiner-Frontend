@@ -156,11 +156,11 @@ class StockAbstractListComp extends React.Component<any, any> {
           {
             isCollapsed ?
                 <Layout style={{marginLeft: 200, padding: "20px 30px",}}>
-                  <Tabs defaultActiveKey="基本信息">
+                  <Tabs defaultActiveKey="info" activeKey={this.props.location.pathname.split("/").pop()}>
                     {
                       DashboardRouteList(this.state.selectedStock).map((route) =>
                           <TabPane tab={<Link to={route.path}>{route.name}</Link>}
-                                   key={route.name}
+                                   key={route.key}
                                    style={{marginTop: "10px"}}
                           >
                             <div id={"chart"}>
