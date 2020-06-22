@@ -2,6 +2,7 @@ import * as React from "react";
 import * as echarts from "echarts";
 import {link, node} from "../../api/interfaces/response/stock/StockResponse";
 import {chartsHeight} from "./chartsOpt";
+import ReactEcharts from "echarts-for-react";
 
 
 export const categories = [
@@ -50,11 +51,11 @@ interface Network {
 
 
 export class NetworkChart extends React.Component<Network, any> {
+  private chartRef: any;
   constructor(props: Network) {
     super(props);
   }
 
-  chartRef = React.createRef();
   option = {
     title: {
       text: ""
@@ -131,11 +132,10 @@ export class NetworkChart extends React.Component<Network, any> {
   };
 
   componentDidMount(): void {
-    let myChart = echarts.init(this.chartRef.current as HTMLDivElement);
+    let echartsInstance = this.chartRef.getEchartsInstance();
     // @ts-ignore
-    myChart.setOption(this.option);
     // echarts点击事件，通过向父组件传递参数来更新数据，从而更新视图
-    myChart.on("click", (params: any) => {
+    echartsInstance.on("click", (params: any) => {
       console.log(params);
       this.props.updateNetworkData(params.data.id, params.data.category);
     });
@@ -145,7 +145,10 @@ export class NetworkChart extends React.Component<Network, any> {
   render(): React.ReactNode {
     return (
         // @ts-ignore
-        <div ref={this.chartRef} style={chartsHeight} />
+        <ReactEcharts option={this.option}
+                      ref={(e) => {this.chartRef = e;}}
+                      style={chartsHeight}
+        />
     );
   }
 

@@ -86,8 +86,11 @@ export class GeoChart extends React.Component<Geo, any> {
   render(): React.ReactNode {
     return (
         // @ts-ignore
-        <ReactEcharts option={this.option} ref={(e) => {this.chartRef = e;}}
-                      showLoading={this.props.data.length === 0} style={{"height": "calc(100vh - 64px)"}} />
+        <ReactEcharts option={this.option}
+                      ref={(e) => {this.chartRef = e;}}
+                      showLoading={this.props.data.length === 0}
+                      loadingOption={loadingOpt}
+                      style={{"height": "calc(100vh - 64px)"}} />
         //<ReactEcharts option={option} showLoading={data.length === 0} loadingOption={loadingOpt}
         //              style={{"height": "calc(100vh - 64px)"}} />
     );
