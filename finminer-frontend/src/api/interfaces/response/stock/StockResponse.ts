@@ -91,7 +91,8 @@ export interface CompanyResponse {
   change: number,
   pct_chg: number,
   vol: number,
-  amount: number
+  amount: number,
+  total_asset: number
 }
 
 export interface GdpResponse {
