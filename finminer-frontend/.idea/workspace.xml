@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cd570f2d-325e-4b9b-8c43-06e9895b87d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/charts/GeoChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charts/GeoChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/charts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/charts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../finminder-frontend/.tmp/" />
     <ignored path="$PROJECT_DIR$/../finminder-frontend/temp/" />
@@ -18,16 +17,17 @@
   <component name="FavoritesManager">
     <favorites_list name="finminer-frontend">
       <favorite_root url="file://$PROJECT_DIR$/src/components/charts/NetworkChart.tsx" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+      <favorite_root url="file://$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.57685184">
+    <splitter split-orientation="horizontal" split-proportion="0.19802678">
       <split-first>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/pages/charts.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-137">
+                <state relative-caret-position="721">
                   <caret line="84" column="12" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
@@ -60,14 +60,38 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/stock/StockNetworkComp.tsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="253">
+                  <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+                  <folding>
+                    <element signature="e#0#31#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/config/routes/index.route.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="594">
+                  <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+                  <folding>
+                    <element signature="e#0#54#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/charts/GeoChart.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="307">
+                <state relative-caret-position="678">
                   <caret line="101" column="49" lean-forward="true" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
                   <folding>
                     <element signature="e#0#35#0" expanded="true" />
@@ -77,10 +101,19 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/utils/valueStyle.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="386">
+                  <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="231">
-                  <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="29" />
+                <state relative-caret-position="481">
+                  <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
                   <folding>
                     <element signature="e#0#31#0" expanded="true" />
                   </folding>
@@ -93,18 +126,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="254">
                   <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/stock/StockNetworkComp.tsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#0#31#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -185,7 +206,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/components/public/charts.tsx" />
-        <option value="$PROJECT_DIR$/src/config/routes/index.route.js" />
         <option value="$PROJECT_DIR$/src/components/layout/header.tsx" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/config/server/axios.js" />
@@ -193,14 +213,15 @@
         <option value="$PROJECT_DIR$/src/pages/charts.js" />
         <option value="$PROJECT_DIR$/src/api/index.api.ts" />
         <option value="$PROJECT_DIR$/src/components/charts/chartsOpt.ts" />
-        <option value="$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx" />
-        <option value="$PROJECT_DIR$/src/components/stock/StockAbrstractListComp.tsx" />
         <option value="$PROJECT_DIR$/src/components/stock/StockNetworkComp.tsx" />
         <option value="$PROJECT_DIR$/src/components/charts/NetworkChart.tsx" />
         <option value="$PROJECT_DIR$/src/api/interfaces/response/stock/StockResponse.ts" />
         <option value="$PROJECT_DIR$/src/utils/valueStyle.ts" />
         <option value="$PROJECT_DIR$/src/pages/charts.tsx" />
         <option value="$PROJECT_DIR$/src/components/charts/GeoChart.tsx" />
+        <option value="$PROJECT_DIR$/src/config/routes/index.route.js" />
+        <option value="$PROJECT_DIR$/src/components/stock/StockAbrstractListComp.tsx" />
+        <option value="$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx" />
       </list>
     </option>
   </component>
@@ -341,7 +362,7 @@
       <workItem from="1592114614157" duration="11750000" />
       <workItem from="1592212979410" duration="6728000" />
       <workItem from="1592486418680" duration="19975000" />
-      <workItem from="1592701470488" duration="32215000" />
+      <workItem from="1592701470488" duration="32947000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 添加图表Loading效果">
       <created>1592490399718</created>
@@ -497,11 +518,25 @@
       <option name="project" value="LOCAL" />
       <updated>1592838587950</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="style: 优化GeoChart样式">
+      <created>1592839043459</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1592839043459</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix: 修复Tabs切换时的bug">
+      <created>1592839708922</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1592839708922</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104319000" />
+    <option name="totallyTimeSpent" value="105051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,12 +563,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.0945946" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.11547912" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.3280098" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50039715" side_tool="true" weight="0.3339254" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960285" weight="0.5085995" />
       <window_info anchor="bottom" id="Statistic" order="12" weight="0.6486486" />
-      <window_info anchor="bottom" id="Messages" order="13" visible="true" weight="0.13390663" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.5257985" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -627,7 +662,9 @@
     <MESSAGE value="fix: 修复网络图类型" />
     <MESSAGE value="feat: 完成公司排名" />
     <MESSAGE value="style: 优化公司排名样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: 优化公司排名样式" />
+    <MESSAGE value="style: 优化GeoChart样式" />
+    <MESSAGE value="fix: 修复Tabs切换时的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 修复Tabs切换时的bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/yarn.lock">
@@ -819,26 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/routes/index.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/stock/StockAbrstractListComp.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="160" column="33" lean-forward="true" selection-start-line="160" selection-start-column="33" selection-end-line="160" selection-end-column="33" />
-          <folding>
-            <element signature="e#60#148#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/homepage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -866,16 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/stock/StockNetworkComp.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/charts/NetworkChart.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -887,13 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/valueStyle.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/interfaces/response/stock/StockResponse.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -901,19 +901,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/charts.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-137">
+        <state relative-caret-position="721">
           <caret line="84" column="12" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -923,10 +913,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/charts/GeoChart.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
+        <state relative-caret-position="678">
           <caret line="101" column="49" lean-forward="true" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/stock/StockNetworkComp.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/routes/index.route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/stock/StockAbrstractListComp.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="73" column="4" lean-forward="true" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
+          <folding>
+            <element signature="e#60#148#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/valueStyle.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

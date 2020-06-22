@@ -2,9 +2,12 @@ import * as React from "react";
 import {withRouter} from "react-router-dom";
 import {StockInfoResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {apiGetStockInfoById} from "../../api/index.api";
-import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col} from "antd";
+import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col, Typography} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
+
+
+const {Paragraph} = Typography;
 
 class StockInfoComp extends React.Component<any, any> {
   state = {
@@ -28,7 +31,9 @@ class StockInfoComp extends React.Component<any, any> {
         <Descriptions title={"公司公告"}>
           <Timeline>
             {
-              infos.map(info => <Timeline.Item key={info}>{info}</Timeline.Item>
+              infos.map(info => <Timeline.Item key={info}>
+                <Paragraph ellipsis={{rows: 5, expandable: true, symbol: '详情'}}>
+                  {info.split("\\n")}</Paragraph></Timeline.Item>
               )
             }
           </Timeline>
@@ -48,7 +53,8 @@ class StockInfoComp extends React.Component<any, any> {
           </Descriptions.Item>
           <Descriptions.Item label={"高管"} span={3}>
             {info.managers.map(manager =>
-                <Tag key={manager.manager_id} color={"yellow"} style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
+                <Tag key={manager.manager_id} color={"yellow"}
+                     style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
           </Descriptions.Item>
           <Descriptions.Item label={"持股人"} span={3}>
             {info.holders.map(holder =>
@@ -72,7 +78,7 @@ class StockInfoComp extends React.Component<any, any> {
           <Descriptions.Item> <Statistic title={"最高价"} value={info.high} suffix={"元"} /> </Descriptions.Item>
           <Descriptions.Item> <Statistic title={"成交量"} value={info.vol} suffix={"手"} /></Descriptions.Item>
           <Descriptions.Item> <Statistic title={"涨跌额"} valueStyle={{color: valueStyle(info.change).color}}
-                                         suffix={info.change === 0 ? "": info.change > 0 ?
+                                         suffix={info.change === 0 ? "" : info.change > 0 ?
                                              <ArrowUpOutlined /> :
                                              <ArrowDownOutlined />} value={info.change} /></Descriptions.Item>
           <Descriptions.Item> <Statistic title={"收盘价"} value={info.close} suffix={"元"} /> </Descriptions.Item>
