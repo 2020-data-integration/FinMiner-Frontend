@@ -4,7 +4,6 @@ import * as React from "react";
 import {GdpResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {loadingOpt} from "./chartsOpt";
 import ReactEcharts from "echarts-for-react";
-import {createRef} from "react";
 
 
 interface Geo {
@@ -15,12 +14,6 @@ interface Geo {
 
 export class GeoChart extends React.Component<Geo, any> {
   private chartRef: any;
-
-  constructor(props: Geo) {
-    super(props);
-    this.chartRef = createRef();
-  }
-
 
   option = {
     title: {
