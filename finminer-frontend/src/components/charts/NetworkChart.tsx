@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as echarts from "echarts";
 import {link, node} from "../../api/interfaces/response/stock/StockResponse";
 import {chartsHeight} from "./chartsOpt";
 import ReactEcharts from "echarts-for-react";
@@ -52,9 +51,6 @@ interface Network {
 
 export class NetworkChart extends React.Component<Network, any> {
   private chartRef: any;
-  constructor(props: Network) {
-    super(props);
-  }
 
   option = {
     title: {
@@ -148,7 +144,9 @@ export class NetworkChart extends React.Component<Network, any> {
     return (
         // @ts-ignore
         <ReactEcharts option={this.option}
-                      ref={(e) => {this.chartRef = e;}}
+                      ref={(e) => {
+                        this.chartRef = e;
+                      }}
                       style={chartsHeight}
         />
     );

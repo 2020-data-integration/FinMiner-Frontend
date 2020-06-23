@@ -16,7 +16,9 @@ export interface StockAbstractResponse {
   change: number,
   pct_chg: number,
   vol: number,
-  amount: number
+  amount: number,
+  shouldBuy: boolean,     // 今天是否应该买入
+  recommendIndex: number   // 推荐指标
 }
 
 export interface StockInfoResponse {
@@ -98,4 +100,15 @@ export interface CompanyResponse {
 export interface GdpResponse {
   name: string,
   value: number
+}
+
+export interface DefenseResponse {
+  shouldBuy: boolean,     // 今天是否应该买入
+  recommendIndex: number,   // 推荐指标
+  revenueRatio: [{
+    year: string,
+    value: number,
+    times: number  // 买入的次数
+  }
+      ]
 }

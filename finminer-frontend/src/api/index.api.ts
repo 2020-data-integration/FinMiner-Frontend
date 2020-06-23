@@ -3,7 +3,7 @@ import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
   StockInfoResponse,
-  StockKLineResponse, CompanyResponse, StockNetworkResponse, GdpResponse, NodeCategory
+  StockKLineResponse, CompanyResponse, StockNetworkResponse, GdpResponse, NodeCategory, DefenseResponse
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
@@ -49,6 +49,15 @@ export async function apiGetGdp(): Promise<BasicResponse<GdpResponse[]>> {
 export async function apiGetCompanyRankByArea(area: string): Promise<BasicResponse<CompanyResponse[]>> {
   const {data} = await globalAxios.get("/rank", {
     params: {area}
+  });
+  return data;
+}
+
+
+// 接口8. 根据公司id获取防守点算法相关数据
+export async function apiGetDefenseInfoById(companyId: string): Promise<BasicResponse<DefenseResponse>> {
+  const {data} = await globalAxios.get("/defense", {
+    params: {companyId}
   });
   return data;
 }

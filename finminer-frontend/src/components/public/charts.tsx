@@ -6,7 +6,7 @@
 import * as React from "react";
 import ReactEcharts from "echarts-for-react";
 import {StockKLineResponse} from "../../api/interfaces/response/stock/StockResponse";
-import {chartsHeight, loadingOpt} from "../charts/chartsOpt";
+import {loadingOpt} from "../charts/chartsOpt";
 
 
 export function Candlestick(klineData: StockKLineResponse[]) {
@@ -152,7 +152,11 @@ export function Candlestick(klineData: StockKLineResponse[]) {
   };
   return (
       // @ts-ignore
-      <ReactEcharts option={option} showLoading={klineData.length === 0} loadingOption={loadingOpt} style={chartsHeight} />
+      <ReactEcharts option={option}
+                    showLoading={klineData.length === 0}
+                    loadingOption={loadingOpt}
+                    style={{  height: "calc( 100vh - 200px)"
+      }} />
   );
 }
 

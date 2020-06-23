@@ -7,6 +7,7 @@ import Dashboard from "../../pages/dashboard";
 import StockInfoComp from "../../components/stock/StockInfoComp";
 import StockCandlestickComp from "../../components/stock/StockCandlestickComp";
 import StockNetworkComp from "../../components/stock/StockNetworkComp";
+import StockDefenceComp from "../../components/stock/StockDefenceComp";
 
 export const RouteConfig = () => (
   <BrowserRouter>
@@ -56,6 +57,12 @@ export function DashboardRouteList(companyId) {
       name: "知识图谱",
       key: "network",
       component: StockNetworkComp
+    },
+    {
+      path: basicPath+"/defense",
+      name: "投资推荐",
+      key: "defense",
+      component: StockDefenceComp
     }
   ];
 }
