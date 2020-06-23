@@ -62,6 +62,7 @@ export class NetworkChart extends React.Component<Network, any> {
     },
     tooltip: {},
     legend: {
+      padding: 10,
       textStyle: {
         fontSize: 10,//字体大小
         color: "#ffffff"//字体颜色
@@ -84,9 +85,10 @@ export class NetworkChart extends React.Component<Network, any> {
       {
         type: "graph",
         layout: "force",
+        animation: false,//是否开启动画
         force: {
-          gravity: 0.03,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
-          edgeLength: 80,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
+          gravity: 0.02,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
+          edgeLength: 60,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
           repulsion: 500,
           layoutAnimation: false
         },

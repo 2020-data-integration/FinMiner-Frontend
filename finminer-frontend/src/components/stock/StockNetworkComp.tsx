@@ -18,21 +18,41 @@ export class StockNetworkComp extends React.Component<any, any> {
   };
 
   async getStockNetworkData(nodeId: string, category: NodeCategory) {
+    console.log("fgds",nodeId,category)
     const res = await apiGetStockNetworkById(nodeId, category);
     const nodes = this.state.nodes;
     const links = this.state.links;
     nodes.push(...res.data.nodes);
     links.push(...res.data.links);
+    let Nodes=[];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i+1; j < nodes.length; j++) {
+        if(nodes[i].category===nodes[j].category&&nodes[i].id===nodes[j].id&&nodes[i].name===nodes[j].name){
+          ++i;
+        }
+      }
+      Nodes.push(nodes[i]);
+    }
+    let Link=[];
+    for (let i = 0; i < links.length; i++) {
+      for (let j = i+1; j < links.length; j++) {
+        if(links[i].source===links[j].source&&links[i].target===links[j].target&&links[i].value===links[j].value){
+          ++i;
+        }
+      }
+      Link.push(links[i]);
+    }
+    console.log(Nodes)
+    console.log(Link)
     this.setState({
-      nodes: [...new Set(res.data.nodes) as any],
-      links: [...new Set(res.data.links) as any],
+      nodes: Nodes,
+      links: Link,
       loading: false
     });
   }
 
 
   updateNetworkData = (nodeId: string, category: NodeCategory) => {
-    // TODO 数据更新函数 需要在该函数或者getStockNetworkData函数里实现数据合并
     this.setState({
           loading: true
         }, () => this.getStockNetworkData(nodeId, category)
