@@ -39,8 +39,7 @@ class Charts extends React.Component {
     this.setState({
       showDrawer: true,
       selectedArea: area
-    });
-    this.getCompanyRankByArea();
+    }, () => this.getCompanyRankByArea());
   };
 
   closeDrawer = () => {
