@@ -18,35 +18,24 @@ export class StockNetworkComp extends React.Component<any, any> {
   };
 
   async getStockNetworkData(nodeId: string, category: NodeCategory) {
-    console.log("fgds",nodeId,category)
     const res = await apiGetStockNetworkById(nodeId, category);
-    const nodes = this.state.nodes;
-    const links = this.state.links;
-    nodes.push(...res.data.nodes);
-    links.push(...res.data.links);
-    let Nodes=[];
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i+1; j < nodes.length; j++) {
-        if(nodes[i].category===nodes[j].category&&nodes[i].id===nodes[j].id&&nodes[i].name===nodes[j].name){
-          ++i;
-        }
+    const nodes = res.data.nodes;
+    const links = res.data.links;
+    let Nodes=this.state.nodes
+    let Links=this.state.links
+    for (let j = 0; j < nodes.length; j++) {
+      if (JSON.stringify(Nodes).indexOf(JSON.stringify(nodes[j])) == -1) {
+        Nodes.push(nodes[j]); // 进行动态的操作
       }
-      Nodes.push(nodes[i]);
     }
-    let Link=[];
     for (let i = 0; i < links.length; i++) {
-      for (let j = i+1; j < links.length; j++) {
-        if(links[i].source===links[j].source&&links[i].target===links[j].target&&links[i].value===links[j].value){
-          ++i;
-        }
+      if (JSON.stringify(Links).indexOf(JSON.stringify(links[i])) == -1) {
+        Links.push(links[i]); // 进行动态的操作
       }
-      Link.push(links[i]);
     }
-    console.log(Nodes)
-    console.log(Link)
     this.setState({
       nodes: Nodes,
-      links: Link,
+      links: Links,
       loading: false
     });
   }
