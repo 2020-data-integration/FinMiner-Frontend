@@ -106,6 +106,7 @@ export interface DefenseResponse {
   shouldBuy: boolean,     // 今天是否应该买入
   recommendIndex: number,   // 推荐指标
   revenueRatio: [{
+    key: number,
     year: string,
     value: number,
     times: number  // 买入的次数

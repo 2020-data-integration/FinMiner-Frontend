@@ -15,9 +15,6 @@ class Charts extends React.Component {
     companyRanks: [] as CompanyResponse[]
   };
 
-  componentDidMount() {
-    this.getGdpData();
-  }
 
   async getGdpData() {
     const res = await apiGetGdp();
@@ -47,6 +44,11 @@ class Charts extends React.Component {
       showDrawer: false
     });
   };
+
+  componentDidMount() {
+    this.getGdpData();
+  }
+
 
   getCompanyList = (info: CompanyResponse, index: number) => (
       <List.Item>

@@ -21,15 +21,15 @@ export class StockNetworkComp extends React.Component<any, any> {
     const res = await apiGetStockNetworkById(nodeId, category);
     const nodes = res.data.nodes;
     const links = res.data.links;
-    let Nodes=this.state.nodes
-    let Links=this.state.links
+    let Nodes = this.state.nodes;
+    let Links = this.state.links;
     for (let j = 0; j < nodes.length; j++) {
-      if (JSON.stringify(Nodes).indexOf(JSON.stringify(nodes[j])) == -1) {
+      if (JSON.stringify(Nodes).indexOf(JSON.stringify(nodes[j])) === -1) {
         Nodes.push(nodes[j]); // 进行动态的操作
       }
     }
     for (let i = 0; i < links.length; i++) {
-      if (JSON.stringify(Links).indexOf(JSON.stringify(links[i])) == -1) {
+      if (JSON.stringify(Links).indexOf(JSON.stringify(links[i])) === -1) {
         Links.push(links[i]); // 进行动态的操作
       }
     }

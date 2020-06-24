@@ -94,7 +94,8 @@ class StockAbstractListComp extends React.Component<any, any> {
         <div style={{paddingTop: "8px"}}>
           <Row>
             <Col span={6}><Statistic title={props.industry} value={props.companyId} suffix={props.companyName} /></Col>
-            <Col span={3}><Statistic title={"投资推荐"} value={props.shouldBuy ? "推荐买入" : "暂不推荐"} /></Col>
+            <Col span={3}><Statistic title={"投资推荐"}
+                                     value={String(props.shouldBuy) === "True" ? "推荐买入" : "暂不推荐"} /></Col>
             <Col span={3}> <Statistic title={"开盘价"} value={props.open} suffix={"元"} /> </Col>
             <Col span={3}> <Statistic title={"最高价"} value={props.high} suffix={"元"} /> </Col>
             <Col span={4}> <Statistic title={"成交量"} value={props.vol} suffix={"手"} /></Col>
@@ -103,7 +104,7 @@ class StockAbstractListComp extends React.Component<any, any> {
                                           <ArrowUpOutlined /> :
                                           <ArrowDownOutlined />} value={props.change} /></Col>
             <Col span={6}> <Statistic title={"交易日期"} value={props.date.split("T")[0]} /></Col>
-            <Col span={3}><Statistic title={"推荐指数"} value={props.recommendIndex} /></Col>
+            <Col span={3}><Statistic title={"推荐指数"} precision={3} value={props.recommendIndex} /></Col>
             <Col span={3}> <Statistic title={"收盘价"} value={props.close} suffix={"元"} /> </Col>
             <Col span={3}> <Statistic title={"最低价"} value={props.low} suffix={"元"} /> </Col>
             <Col span={4}> <Statistic title={"成交额"} value={props.amount} suffix={"千元"} /></Col>

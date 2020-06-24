@@ -2,6 +2,7 @@ import * as React from "react";
 import {link, node} from "../../api/interfaces/response/stock/StockResponse";
 import {chartsHeight} from "./chartsOpt";
 import ReactEcharts from "echarts-for-react";
+import {apiGetStockNetworkById} from "../../api/index.api";
 
 
 export const categories = [
@@ -134,8 +135,13 @@ export class NetworkChart extends React.Component<Network, any> {
     // @ts-ignore
     // echarts点击事件，通过向父组件传递参数来更新数据，从而更新视图
     echartsInstance.on("click", (params: any) => {
-      console.log(params);
-      this.props.updateNetworkData(params.data.id, params.data.category);
+      // TODO 优化避免数据未更新会重绘的情况
+      apiGetStockNetworkById(params.data.id, params.data.category).then((res) => {
+        if (res.data.links.length !== 1) {
+          this.props.updateNetworkData(params.data.id, params.data.category);
+        }
+      });
+
     });
   }
 
