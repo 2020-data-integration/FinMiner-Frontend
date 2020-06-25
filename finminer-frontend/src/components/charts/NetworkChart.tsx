@@ -21,7 +21,7 @@ export const categories = [
         color: "#148b96"
       }
     },
-    symbolSize: 45
+    symbolSize: 40
 
   }, {
     name: "Manager",
@@ -30,7 +30,7 @@ export const categories = [
         color: "#BC8F8F"
       }
     },
-    symbolSize: 40
+    symbolSize: 30
 
   }, {
     name: "Concept",
@@ -39,7 +39,7 @@ export const categories = [
         color: "#CDBE70"
       }
     },
-    symbolSize: 35
+    symbolSize: 40
   }];
 
 interface Network {
@@ -52,14 +52,12 @@ interface Network {
 
 export class NetworkChart extends React.Component<Network, any> {
   private chartRef: any;
-
   option = {
     title: {
       text: ""
     },
     tooltip: {},
     legend: {
-      padding: 10,
       textStyle: {
         fontSize: 10,//字体大小
         color: "#ffffff"//字体颜色
@@ -84,8 +82,8 @@ export class NetworkChart extends React.Component<Network, any> {
         layout: "force",
         animation: false,//是否开启动画
         force: {
-          gravity: 0.02,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
-          edgeLength: 60,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
+          gravity: 0.6,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
+          edgeLength: 100,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
           repulsion: 500,
           layoutAnimation: false
         },
@@ -153,7 +151,7 @@ export class NetworkChart extends React.Component<Network, any> {
                       ref={(e) => {
                         this.chartRef = e;
                       }}
-                      style={chartsHeight}
+                      style={{ height: "calc( 100vh + 200px)" }}
         />
     );
   }

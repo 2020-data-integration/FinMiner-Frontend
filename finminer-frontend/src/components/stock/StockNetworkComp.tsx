@@ -55,13 +55,17 @@ export class StockNetworkComp extends React.Component<any, any> {
 
   render(): React.ReactNode {
     return (
-        <div>
+        <div id="charts">
+            <div id="myChart" >
           {this.state.loading ?
               // @ts-ignore
               <ReactEcharts option={{series: [{type: "graph", category: categories}]}} showLoading={true}
                             loadingOption={loadingOpt} /> :
               <NetworkChart loading={this.state.loading} nodes={this.state.nodes} links={this.state.links}
-                            updateNetworkData={this.updateNetworkData} />}
+                            updateNetworkData={this.updateNetworkData} />
+
+          }
+            </div>
         </div>
     );
 

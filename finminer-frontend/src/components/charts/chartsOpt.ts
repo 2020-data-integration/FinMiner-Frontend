@@ -15,5 +15,5 @@ export const loadingOpt = {
 };
 
 export const chartsHeight = {
-  height: "calc( 100vh + 200px)"
+  height: "calc( 100vh + 150px)",
 };
