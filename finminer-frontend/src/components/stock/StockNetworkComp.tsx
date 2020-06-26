@@ -6,6 +6,7 @@ import {link, node, NodeCategory} from "../../api/interfaces/response/stock/Stoc
 import ReactEcharts from "echarts-for-react";
 import {categories} from "../charts/NetworkChart";
 import {loadingOpt} from "../charts/chartsOpt";
+import {Divider} from "antd";
 
 
 export class StockNetworkComp extends React.Component<any, any> {
@@ -14,7 +15,8 @@ export class StockNetworkComp extends React.Component<any, any> {
     category: 0 as NodeCategory,
     nodes: [] as node[],
     links: [] as link[],
-    loading: true
+    loading: true,
+    source: []
   };
 
   async getStockNetworkData(nodeId: string, category: NodeCategory) {
@@ -36,7 +38,8 @@ export class StockNetworkComp extends React.Component<any, any> {
     this.setState({
       nodes: Nodes,
       links: Links,
-      loading: false
+      loading: false,
+      source: res.source
     });
   }
 
@@ -51,7 +54,17 @@ export class StockNetworkComp extends React.Component<any, any> {
   componentDidMount(): void {
     this.getStockNetworkData(this.state.companyId, this.state.category);
   }
-
+  getSource = (Source: string[]) => {
+    let titlehtml = ''  //输出title
+    titlehtml += Source.map(function(item){
+      return   item
+    }).join(' , ')
+    return (
+        <Divider orientation="center" >
+          {"数据来源："+titlehtml}
+        </Divider>
+    );
+  };
 
   render(): React.ReactNode {
     return (
@@ -65,6 +78,7 @@ export class StockNetworkComp extends React.Component<any, any> {
                             updateNetworkData={this.updateNetworkData} />
 
           }
+              {this.getSource(this.state.source)}
             </div>
         </div>
     );

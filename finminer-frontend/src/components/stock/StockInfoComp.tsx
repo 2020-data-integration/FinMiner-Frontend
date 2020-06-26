@@ -2,9 +2,10 @@ import * as React from "react";
 import {withRouter} from "react-router-dom";
 import {StockInfoResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {apiGetStockInfoById} from "../../api/index.api";
-import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col, Typography} from "antd";
+import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col, Typography,Divider} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
+import {white} from "color-name";
 
 
 const {Paragraph} = Typography;
@@ -12,14 +13,18 @@ const {Paragraph} = Typography;
 class StockInfoComp extends React.Component<any, any> {
   state = {
     companyId: this.props.location.pathname.split("/")[2],
-    info: {} as StockInfoResponse
+    info: {} as StockInfoResponse,
+      source: []
   };
 
   async getStockInfoData(companyId: string) {
     const res = await apiGetStockInfoById(companyId);
+    console.log(res)
     this.setState({
-      info: res.data
+      info: res.data,
+        source: res.source
     });
+    console.log(res)
   }
 
   componentDidMount(): void {
@@ -110,9 +115,20 @@ class StockInfoComp extends React.Component<any, any> {
         </Descriptions>
     );
   };
-
+    getSource = (Source: string[]) => {
+        let titlehtml = ''  //输出title
+        titlehtml += Source.map(function(item){
+            return   item
+        }).join(' , ')
+        return (
+            <Divider orientation="center" >
+                {"数据来源："+titlehtml}
+            </Divider>
+        );
+    };
   render(): React.ReactNode {
     const info = this.state.info;
+      const source = this.state.source;
     return (
         <div>
           {Object.keys(info).length === 0 ? <Spin /> :
@@ -133,6 +149,9 @@ class StockInfoComp extends React.Component<any, any> {
                 <Row style={{marginTop: "20px"}}>
                   {this.getAnnouncement(info.announcement)}
                 </Row>
+                  <Row style={{marginTop: "20px"}}>
+                      {this.getSource(source)}
+                  </Row>
               </div>
           }
         </div>
