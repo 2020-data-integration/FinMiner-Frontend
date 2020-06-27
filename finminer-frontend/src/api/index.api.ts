@@ -3,7 +3,14 @@ import {BasicResponse} from "./interfaces/response/BasicResponse";
 import {
   StockAbstractResponse,
   StockInfoResponse,
-  StockKLineResponse, CompanyResponse, StockNetworkResponse, GdpResponse, NodeCategory, DefenseResponse
+  StockKLineResponse,
+  CompanyResponse,
+  StockNetworkResponse,
+  GdpResponse,
+  NodeCategory,
+  DefenseResponse,
+  SharpResponse,
+  StockKLineDefenceResponse, StockBuyRecommendResponse
 } from "./interfaces/response/stock/StockResponse";
 
 // 接口1. 根据companyId查看股票详情信息
@@ -59,5 +66,26 @@ export async function apiGetDefenseInfoById(companyId: string): Promise<BasicRes
   const {data} = await globalAxios.get("/defense", {
     params: {companyId}
   });
+  return data;
+}
+
+// 接口9. 按照夏普率获得公司排名
+export async function apiGetCompanyRankBySharp(pageNum: number, pageSize: number): Promise<BasicResponse<SharpResponse[]>> {
+  const {data} = await globalAxios.get(" /rank/sharp", {params: {pageNum, pageSize}});
+  return data;
+}
+
+// 接口10. 获取2015-2019防守点相关的K线数据
+export async function apiGetStockKLineAboutDefence(
+    year: number,
+    companyId: string
+): Promise<BasicResponse<StockKLineDefenceResponse>> {
+  const {data} = await globalAxios.get("/defense/k", {params: {year, companyId}});
+  return data;
+}
+
+// 接口11. 获取股票买入推荐的K线数据
+export async function apiGetStockBuyRecommend(companyId: string): Promise<BasicResponse<StockBuyRecommendResponse>> {
+  const {data} = await globalAxios.get("/recommend/k", {params: {companyId}});
   return data;
 }

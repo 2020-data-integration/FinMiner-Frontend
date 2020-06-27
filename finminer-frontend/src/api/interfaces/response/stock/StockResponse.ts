@@ -117,3 +117,22 @@ export interface DefenseResponse {
   }
       ]
 }
+
+export interface SharpResponse{
+  companyId: string,
+  companyName: string,
+  shouldBuy: boolean,     // 今天是否应该买入
+  recommendIndex: boolean    // 推荐指标
+}
+
+export interface StockKLineDefenceResponse{
+  rawData: Array<[]>
+  defensePoint:  Array<[]>
+  buyPoint: Array<[]>
+  sellPoint:  Array<[]>
+}
+
+export interface StockBuyRecommendResponse{
+  rawData: Array<[]>
+  defensePoint:  Array<any>
+}
