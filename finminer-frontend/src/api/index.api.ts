@@ -71,7 +71,7 @@ export async function apiGetDefenseInfoById(companyId: string): Promise<BasicRes
 
 // 接口9. 按照夏普率获得公司排名
 export async function apiGetCompanyRankBySharp(pageNum: number, pageSize: number): Promise<BasicResponse<SharpResponse[]>> {
-  const {data} = await globalAxios.get(" /rank/sharp", {params: {pageNum, pageSize}});
+  const {data} = await globalAxios.get("/rank/sharp", {params: {pageNum, pageSize}});
   return data;
 }
 

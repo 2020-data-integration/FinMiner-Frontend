@@ -12,9 +12,10 @@ import {Statistic, Row, Col, Spin, Table} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 
+
 class StockDefenceComp extends React.Component<any, any> {
   state = {
-    companyId: this.props.location.pathname.split("/")[2],
+    companyId: this.props.companyId && this.props.companyId !== "" ? this.props.companyId : this.props.location.pathname.split("/")[2],
     defenseData: Object as unknown as DefenseResponse
   };
 

@@ -91,7 +91,7 @@ class StockAbstractListComp extends React.Component<any, any> {
   // menu展开时后的股票信息
   getStockDetailComp = (props: StockAbstractResponse) => {
     return (
-        <div style={{paddingTop: "8px"}}>
+        <div>
           <Row>
             <Col span={6}><Statistic title={props.industry} value={props.companyId} suffix={props.companyName} /></Col>
             <Col span={3}><Statistic title={"投资推荐"}
@@ -127,6 +127,7 @@ class StockAbstractListComp extends React.Component<any, any> {
     );
   };
   // 单个股票的Menu组件
+
   getStockMenuComp = (props: StockAbstractResponse) => {
     return (
         <Menu.Item key={props.companyId}
@@ -158,7 +159,7 @@ class StockAbstractListComp extends React.Component<any, any> {
           </Sider>
           {
             isCollapsed ?
-                <Layout style={{marginLeft: 200, padding: "20px 30px",}}>
+                <Layout style={{marginLeft: 200, padding: "20px 30px"}}>
                   <Tabs defaultActiveKey="info" activeKey={this.props.location.pathname.split("/").pop()}>
                     {
                       DashboardRouteList(this.state.selectedStock).map((route) =>

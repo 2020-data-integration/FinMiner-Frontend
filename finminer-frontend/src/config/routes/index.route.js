@@ -1,5 +1,6 @@
 import {BrowserRouter, Route} from "react-router-dom";
 import React from "react";
+import Defense from "../../pages/defense"
 import Homepage from "../../pages/homepage";
 import Charts from "../../pages/charts";
 import {PageHeader} from "../../components/layout/header";
@@ -13,6 +14,7 @@ export const RouteConfig = () => (
   <BrowserRouter>
     <PageHeader />
     <Route exact path='/' component={Homepage} />
+    <Route path='/defense' component={Defense} />
     <Route path='/dashboard' component={Dashboard} />
     <Route path='/charts' component={Charts} />
   </BrowserRouter>
@@ -24,6 +26,11 @@ export const RouteList = [
     path: "/",
     name: "首页",
     component:Homepage
+  },
+  {
+    path: "/defense",
+    name: "投资推荐",
+    component:Defense
   },
   {
     path: "/dashboard",

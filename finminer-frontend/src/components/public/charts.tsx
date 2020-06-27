@@ -108,29 +108,6 @@ export function Candlestick(klineData: StockKLineResponse[]) {
           color0: "#0CF49B",
           borderColor: "#FD1050",
           borderColor0: "#0CF49B"
-        },
-        markPoint: {
-          label: {
-            normal: {
-              formatter: function (param: any) {
-                return param != null ? Math.round(param.value) : "";
-              }
-            }
-          },
-          tooltip: {
-            formatter: function (param: any) {
-              return param.name + "<br>" + (param.data.coord || "");
-            }
-          },
-          data: [
-            {
-              name: "XX标点",
-              coord: ["2016-5-31", 10.55],
-              itemStyle: {
-                color: "rgb(41,60,85)"
-              }
-            }
-          ]
         }
       },
       {

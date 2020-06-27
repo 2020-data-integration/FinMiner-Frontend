@@ -5,9 +5,6 @@ import StockAbstractListComp from "../components/stock/StockAbrstractListComp";
 
 class Dashboard extends React.Component {
 
-
-
-
   render() {
     // const {stockList} = this.state as PageDashboardInterface;
     return (
