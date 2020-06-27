@@ -21,9 +21,9 @@ class StockDefenceComp extends React.Component<any, any> {
   async getStockDefenceData(companyId: string) {
     const res = await apiGetDefenseInfoById(companyId);
     let data = res.data;
-    data[0].revenueRatio.forEach((d, index) => d.key = index);
+    data.revenueRatio.forEach((d, index) => d.key = index);
     this.setState({
-      defenseData: data[0]
+      defenseData: data
     });
   }
 
@@ -62,11 +62,11 @@ class StockDefenceComp extends React.Component<any, any> {
           {Object.keys(defenseData).length === 0 ? <Spin /> :
               <div>
                 <Row>
-                  <Col span={2}> <Statistic title={"投资推荐"}
+                  <Col span={3}> <Statistic title={"投资推荐"}
                                             value={defenseData.shouldBuy ? "推荐买入" : "暂不推荐"}
                                             valueStyle={{fontSize: "25px"}}
                   /></Col>
-                  <Col span={2}><Statistic title={"推荐指数"} precision={2} value={defenseData.recommendIndex} /></Col>
+                  <Col span={3}><Statistic title={"夏普比率"} precision={2} value={defenseData.recommendIndex} /></Col>
                 </Row>
                 <div style={{marginTop: "20px"}}>
                   <Table columns={columns} dataSource={defenseData.revenueRatio} />

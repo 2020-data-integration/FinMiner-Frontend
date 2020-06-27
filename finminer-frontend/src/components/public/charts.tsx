@@ -11,6 +11,7 @@ import {loadingOpt} from "../charts/chartsOpt";
 
 export function Candlestick(klineData: StockKLineResponse[]) {
 
+  klineData.forEach(item => item.date = item.date.split("T")[0]);
   let rawData = klineData;
 
   function calculateMA(dayCount: number, data: Array<Array<number>>) {
@@ -36,6 +37,7 @@ export function Candlestick(klineData: StockKLineResponse[]) {
   let data = rawData.map(function (item) {
     return [item.open, item.close, item.high, item.low];
   });
+
   let option = {
     backgroundColor: "transparent",
     legend: {
@@ -106,6 +108,29 @@ export function Candlestick(klineData: StockKLineResponse[]) {
           color0: "#0CF49B",
           borderColor: "#FD1050",
           borderColor0: "#0CF49B"
+        },
+        markPoint: {
+          label: {
+            normal: {
+              formatter: function (param: any) {
+                return param != null ? Math.round(param.value) : "";
+              }
+            }
+          },
+          tooltip: {
+            formatter: function (param: any) {
+              return param.name + "<br>" + (param.data.coord || "");
+            }
+          },
+          data: [
+            {
+              name: "XX标点",
+              coord: ["2016-5-31", 10.55],
+              itemStyle: {
+                color: "rgb(41,60,85)"
+              }
+            }
+          ]
         }
       },
       {
@@ -155,8 +180,9 @@ export function Candlestick(klineData: StockKLineResponse[]) {
       <ReactEcharts option={option}
                     showLoading={klineData.length === 0}
                     loadingOption={loadingOpt}
-                    style={{  height: "calc( 100vh - 200px)"
-      }} />
+                    style={{
+                      height: "calc( 100vh - 200px)"
+                    }} />
   );
 }
 

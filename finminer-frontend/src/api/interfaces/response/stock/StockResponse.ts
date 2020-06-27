@@ -53,11 +53,14 @@ export interface StockInfoResponse {
 }
 
 export interface StockKLineResponse {
-  date: number,
+  date: string,
   open: number,
   close: number,
   high: number,
   low: number,
+  change: number,
+  vol: number,
+  amount: number
 }
 
 

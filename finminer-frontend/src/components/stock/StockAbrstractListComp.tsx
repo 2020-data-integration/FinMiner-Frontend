@@ -104,7 +104,7 @@ class StockAbstractListComp extends React.Component<any, any> {
                                           <ArrowUpOutlined /> :
                                           <ArrowDownOutlined />} value={props.change} /></Col>
             <Col span={6}> <Statistic title={"交易日期"} value={props.date.split("T")[0]} /></Col>
-            <Col span={3}><Statistic title={"推荐指数"} precision={3} value={props.recommendIndex} /></Col>
+            <Col span={3}><Statistic title={"夏普比率"} precision={3} value={props.recommendIndex} /></Col>
             <Col span={3}> <Statistic title={"收盘价"} value={props.close} suffix={"元"} /> </Col>
             <Col span={3}> <Statistic title={"最低价"} value={props.low} suffix={"元"} /> </Col>
             <Col span={4}> <Statistic title={"成交额"} value={props.amount} suffix={"千元"} /></Col>

@@ -45,9 +45,9 @@ class Charts extends React.Component {
     });
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getGdpData();
-  }
+  };
 
 
   getCompanyList = (info: CompanyResponse, index: number) => (

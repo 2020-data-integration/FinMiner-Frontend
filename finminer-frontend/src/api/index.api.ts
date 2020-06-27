@@ -55,7 +55,7 @@ export async function apiGetCompanyRankByArea(area: string): Promise<BasicRespon
 
 
 // 接口8. 根据公司id获取防守点算法相关数据
-export async function apiGetDefenseInfoById(companyId: string): Promise<BasicResponse<DefenseResponse[]>> {
+export async function apiGetDefenseInfoById(companyId: string): Promise<BasicResponse<DefenseResponse>> {
   const {data} = await globalAxios.get("/defense", {
     params: {companyId}
   });
