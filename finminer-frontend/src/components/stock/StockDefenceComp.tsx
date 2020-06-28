@@ -11,11 +11,14 @@ import {
   StockBuyRecommendResponse,
   StockKLineDefenceResponse
 } from "../../api/interfaces/response/stock/StockResponse";
-import {Statistic, Row, Col, Spin, Table, Button, Modal} from "antd";
+import {Statistic, Row, Col, Spin, Table, Button, Modal, Typography, Alert, Tooltip} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 import {CandlestickDefenceChart} from "../charts/CandlestickDefenceChart";
+import ReactEcharts from "echarts-for-react";
+import {QuestionOutlined} from "@ant-design/icons/lib";
 
+const {Title} = Typography;
 
 interface Defence {
   companyId: string
@@ -83,6 +86,8 @@ class StockDefenceComp extends React.Component<Defence, any> {
 
   render(): React.ReactNode {
     const defenseData = this.state.defenseData;
+    const pastChartData = this.state.pastChartData;
+    const currentChartData = this.state.currentChartData;
     const columns = [
       {
         title: "年份",
@@ -109,24 +114,79 @@ class StockDefenceComp extends React.Component<Defence, any> {
             </span>
       }
     ];
-    const pastChartData = this.state.pastChartData;
-    const currentChartData = this.state.currentChartData;
+    const alertStyle = {marginBottom: "10px"};
 
     return (
         <div>
           {Object.keys(defenseData).length === 0 || Object.keys(currentChartData).length === 0 ? <Spin /> :
               <div>
                 <Row>
+                  <Col span={6}>
+                    <Title level={2}
+                           style={{marginTop: "10px", marginLeft: "10px"}}
+                    >{this.state.companyId}</Title>
+                  </Col>
                   <Col span={3}> <Statistic title={"投资推荐"}
                                             value={defenseData.shouldBuy ? "推荐买入" : "暂不推荐"}
-                                            valueStyle={{fontSize: "25px"}}
+                                            valueStyle={{fontSize: "22px"}}
                   /></Col>
                   <Col span={3}><Statistic title={"夏普比率"} precision={2} value={defenseData.recommendIndex} /></Col>
                 </Row>
-                <Row>
-                  {CandlestickDefenceChart(currentChartData.rawData, [currentChartData.defensePoint])}
-                </Row>
+                <div style={{display: "flex", alignItems: "center", marginTop: "20px"}}>
+                  <div style={{width: "55%"}}>
+                    {CandlestickDefenceChart(currentChartData.rawData, [currentChartData.defensePoint])}
+                  </div>
+                  <div style={{marginLeft: "20px"}}>
+                    <Alert
+                        message="投资推荐"
+                        description={
+                          <div>若当前股价低于左侧K线图中的防守点，则推荐买入
+                          </div>}
+                        type="success"
+                        showIcon
+                        style={alertStyle}
+                    />
+                    <Alert
+                        message="夏普比率"
+                        description={
+                          <div>计算公式：投资组合预期报酬率/标准差。<br />
+                            对收益与风险加以综合考虑，用以衡量金融资产的绩效表现<br />
+                            夏普比率越高，则按推荐投资风险越低
+                          </div>}
+                        type="info"
+                        showIcon
+                        style={alertStyle}
+                    />
+                    <Alert
+                        message="K线图标注"
+                        description={
+                          <div>
+                            <div>- 防守点：如股价上涨2%，交易量上涨20%，则低点为防守点</div>
+                            <div>- 买入点：若价格低于倒数第二个防守点，则买入</div>
+                            <div>- 卖出点：在买入后，上涨超过3%或下跌超过5%，则卖出</div>
+                          </div>
+                        }
+                        type="warning"
+                        showIcon
+                        style={alertStyle}
+                    />
+                  </div>
+                </div>
                 <div style={{marginTop: "20px"}}>
+                  <Title level={4}>往年情况
+                    <Tooltip
+                        title={
+                          <div>
+                            <div>- 收益：收益越高，代表该股票越符合庄家特质</div>
+                            <div>- 买卖次数：买卖次数越多，代表该股票越符合庄家特质</div>
+                          </div>
+                        }>
+                      <Button shape={"circle"}
+                              style={{marginLeft: "10px"}}
+                              icon={<QuestionOutlined />} size={"small"} />
+                    </Tooltip>
+
+                  </Title>
                   <Table columns={columns} dataSource={defenseData.revenueRatio} />
                 </div>
                 {
@@ -139,9 +199,11 @@ class StockDefenceComp extends React.Component<Defence, any> {
                                minHeight: "65vh"
                              }}
                              onCancel={() => this.setState({showChart: false})}>
-                        {
-                          CandlestickDefenceChart(pastChartData.rawData, pastChartData.defensePoint, pastChartData.buyPoint, pastChartData.sellPoint)
-                        }
+                        <div style={{width: "60vw"}}>
+                          {
+                            CandlestickDefenceChart(pastChartData.rawData, pastChartData.defensePoint, pastChartData.buyPoint, pastChartData.sellPoint)
+                          }
+                        </div>
                       </Modal> : <></>
                 }
               </div>}

@@ -23,7 +23,7 @@ class Defense extends React.Component {
     if (key !== "loading-key") {
       this.setState({
             selectedStock: key
-          }, () => console.log(this.state.selectedStock)
+          }
       );
     } else {
       this.setState({
