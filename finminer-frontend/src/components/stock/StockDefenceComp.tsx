@@ -5,7 +5,6 @@
  */
 
 import * as React from "react";
-import {withRouter} from "react-router-dom";
 import {apiGetDefenseInfoById} from "../../api/index.api";
 import {DefenseResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {Statistic, Row, Col, Spin, Table} from "antd";
@@ -13,14 +12,19 @@ import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 
 
-class StockDefenceComp extends React.Component<any, any> {
+interface Defence {
+  companyId: string
+}
+
+class StockDefenceComp extends React.Component<Defence, any> {
   state = {
-    companyId: this.props.companyId && this.props.companyId !== "" ? this.props.companyId : this.props.location.pathname.split("/")[2],
+    companyId: this.props.companyId,
+    // && this.props.companyId !== "" ? this.props.companyId : this.props.location.pathname.split("/")[2],
     defenseData: Object as unknown as DefenseResponse
   };
 
-  async getStockDefenceData(companyId: string) {
-    const res = await apiGetDefenseInfoById(companyId);
+  async getStockDefenceData() {
+    const res = await apiGetDefenseInfoById(this.state.companyId);
     let data = res.data;
     data.revenueRatio.forEach((d, index) => d.key = index);
     this.setState({
@@ -28,8 +32,14 @@ class StockDefenceComp extends React.Component<any, any> {
     });
   }
 
+  componentWillReceiveProps(nextProps: Readonly<Defence>, nextContext: any): void {
+    this.setState({
+      companyId: nextProps.companyId
+    }, () => this.getStockDefenceData());
+  }
+
   componentDidMount(): void {
-    this.getStockDefenceData(this.state.companyId);
+    this.getStockDefenceData();
   }
 
 
@@ -56,12 +66,13 @@ class StockDefenceComp extends React.Component<any, any> {
       }
     ];
 
-    console.log(defenseData);
 
     return (
         <div>
           {Object.keys(defenseData).length === 0 ? <Spin /> :
               <div>
+                <Row>
+                </Row>
                 <Row>
                   <Col span={3}> <Statistic title={"投资推荐"}
                                             value={defenseData.shouldBuy ? "推荐买入" : "暂不推荐"}
@@ -78,4 +89,4 @@ class StockDefenceComp extends React.Component<any, any> {
   }
 }
 
-export default withRouter(StockDefenceComp);
+export default StockDefenceComp;
