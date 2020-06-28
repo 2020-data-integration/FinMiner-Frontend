@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: calc(100vh - 64px);
+  min-height: 0vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +36,137 @@
     transform: rotate(360deg);
   }
 }
-.center{
+
+.background{
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+}
+
+.vcenter {
+  position:absolute;
+  left:10%;
+  top:70px;
+  font-size:450%;
+  font-family: fantasy;
+}
+.center {
+  position:absolute;
+  top:250px;
+  left:10%;
+  font-size:230%;
+  font-family: fantasy;
+  text-align: left;
+}
+
+.ti{
+
   text-align: center;
+  position:relative;
+}
+.detail{
+
+  text-align: center;
+  margin-top: 3%;
+  padding: 40px;
+  font-size:450%;
+}
+.sli{
+  font-size:350%;
+}
+.content{
+  margin-top: 40px;
+  font-size:25%;
+}
+.getInfo{
+  width: 50%;
+  /* 文字颜色 */
+  /* 清除背景色 */
+  background: transparent;
+  /* 边框样式、颜色、宽度 */
+  border: 2px solid #0099CC;
+  /* 给边框添加圆角 */
+  border-radius: 6px;
+  /* 字母转大写 */
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+/* 悬停样式 */
+.getInfo:hover{
+  background-color: #008CBA;
+  color: white;
+}
+.card {
+  float:left;
+  width:45%;
+  margin-left: 3%;
+  margin-top: 50px;
+  background-color: cadetblue;
+  box-shadow:0px 5px 20px #999;
+}
+.card a {
+  color:#333;
+  text-decoration:none;
+}
+.card:hover .card-image img {
+  width:160%;
+  filter:grayscale(0);
+}
+.card-image {
+  height:350px;
+  position:relative;
+  overflow:hidden;
+}
+.card-image img {
+  width:150%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  filter:grayscale(1);
+  transition-property:filter width;
+  transition-duration:.3s;
+  transition-timing-function:ease;
+}
+.card-body {
+  text-align:center;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+.card-date {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.card-title, .card-excerpt {
+  font-family: 'Playfair Display', serif;
+}
+.card-date, .card-title {
+  text-align:center;
+  text-transform:uppercase;
+  font-weight: bold;
+}
+.card-date, .card-excerpt {
+  color: #777;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+}
+.Knowledge{
+  background-color: cadetblue;
+  height: 400px;
+}
+.ConTent{
+  font-size:140%;
 }
