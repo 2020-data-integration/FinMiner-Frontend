@@ -1,10 +1,39 @@
 import ReactEcharts from "echarts-for-react";
 import {loadingOpt} from "./chartsOpt";
 import * as React from "react";
+import {number} from "prop-types";
 
 
+export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint?: Array<Array<any>>, buyPoint?: Array<Array<any>>, sellPoint?: Array<Array<any>>) {
+  const defensePoints = defensePoint === undefined ? [] : defensePoint.map(point => {
+    return {
+      coord: point,
+      value: "防守点",
+      itemStyle: {
+        color: "rgb(41,60,85)"
+      }
+    };
+  });
 
-export function CandlestickDefenceChart(rawData: Array<Array<any>>,defensePoint?:Array<Array<any>>,buyPoint?: Array<Array<any>>,sellPoint?:Array<Array<any>>){
+  const buyPoints = buyPoint === undefined ? [] : buyPoint.map(point => {
+    return {
+      coord: point,
+      value: "买入点",
+      itemStyle: {
+        color: "rgb(41,60,85)"
+      }
+    };
+  });
+
+  const sellPoints = sellPoint === undefined ? [] : sellPoint.map(point => {
+    return {
+      coord: point,
+      value: "卖出点",
+      itemStyle: {
+        color: "rgb(41,60,85)"
+      }
+    };
+  });
 
 
   let option = {
@@ -30,7 +59,7 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>,defensePoint?
     },
     xAxis: {
       type: "category",
-      data: rawData.map(item=>item[0]),
+      data: rawData.map(item => item[0]),
       axisLine: {lineStyle: {color: "#8392A5"}}
     },
     yAxis: {
@@ -71,7 +100,7 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>,defensePoint?
       {
         type: "candlestick",
         name: "日K",
-        data: rawData,
+        data: rawData.map(item => [item[1], item[2], item[3], item[4]]),
         itemStyle: {
           color: "#FD1050",
           color0: "#0CF49B",
@@ -82,7 +111,7 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>,defensePoint?
           label: {
             normal: {
               formatter: function (param: any) {
-                return param != null ? Math.round(param.value) : "";
+                return param != null ? param.value : "";
               }
             }
           },
@@ -91,15 +120,7 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>,defensePoint?
               return param.name + "<br>" + (param.data.coord || "");
             }
           },
-          data: [
-            {
-              name: "XX标点",
-              coord: ["2016-5-31", 10.55],
-              itemStyle: {
-                color: "rgb(41,60,85)"
-              }
-            }
-          ]
+          data: defensePoints.concat(...buyPoints, ...sellPoints)
         }
       }
     ]
@@ -107,8 +128,9 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>,defensePoint?
   return (
       // @ts-ignore
       <ReactEcharts option={option}
-                    showLoading={rawData.length === 0}
+                    showLoading={rawData === undefined || rawData.length === 0}
                     loadingOption={loadingOpt}
-                   />
+                    style={{width: "60vw", height: "60vh"}}
+      />
   );
 }

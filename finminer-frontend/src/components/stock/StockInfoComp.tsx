@@ -2,29 +2,29 @@ import * as React from "react";
 import {withRouter} from "react-router-dom";
 import {StockInfoResponse} from "../../api/interfaces/response/stock/StockResponse";
 import {apiGetStockInfoById} from "../../api/index.api";
-import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col, Typography,Divider} from "antd";
+import {Timeline, Spin, Descriptions, Tag, Statistic, Row, Col, Typography, Divider} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
-import {white} from "color-name";
 
 
-const {Paragraph} = Typography;
+const {Paragraph, Title} = Typography;
+
 
 class StockInfoComp extends React.Component<any, any> {
   state = {
     companyId: this.props.location.pathname.split("/")[2],
     info: {} as StockInfoResponse,
-      source: []
+    source: []
   };
 
   async getStockInfoData(companyId: string) {
     const res = await apiGetStockInfoById(companyId);
-    console.log(res)
+    console.log(res);
     this.setState({
       info: res.data,
-        source: res.source
+      source: res.source
     });
-    console.log(res)
+    console.log(res);
   }
 
   componentDidMount(): void {
@@ -33,16 +33,17 @@ class StockInfoComp extends React.Component<any, any> {
 
   getAnnouncement = (infos: string[]) => {
     return (
-        <Descriptions title={"公司公告"}>
-          <Timeline>
+        <>
+          <Title level={4}>公司公告</Title>
+          <Timeline style={{display: "block"}}>
             {
               infos.map(info => <Timeline.Item key={info}>
-                <Paragraph ellipsis={{rows: 5, expandable: true, symbol: '详情'}}>
+                <Paragraph ellipsis={{rows: 5, expandable: true, symbol: "详情"}}>
                   {info.split("\\n")}</Paragraph></Timeline.Item>
               )
             }
           </Timeline>
-        </Descriptions>
+        </>
     );
   };
 
@@ -115,20 +116,21 @@ class StockInfoComp extends React.Component<any, any> {
         </Descriptions>
     );
   };
-    getSource = (Source: string[]) => {
-        let titlehtml = ''  //输出title
-        titlehtml += Source.map(function(item){
-            return   item
-        }).join(' , ')
-        return (
-            <Divider orientation="center" >
-                {"数据来源："+titlehtml}
-            </Divider>
-        );
-    };
+  getSource = (Source: string[]) => {
+    let titlehtml = "";  //输出title
+    titlehtml += Source.map(function (item) {
+      return item;
+    }).join(" , ");
+    return (
+        <Divider orientation="center">
+          {"数据来源：" + titlehtml}
+        </Divider>
+    );
+  };
+
   render(): React.ReactNode {
     const info = this.state.info;
-      const source = this.state.source;
+    const source = this.state.source;
     return (
         <div>
           {Object.keys(info).length === 0 ? <Spin /> :
@@ -149,9 +151,9 @@ class StockInfoComp extends React.Component<any, any> {
                 <Row style={{marginTop: "20px"}}>
                   {this.getAnnouncement(info.announcement)}
                 </Row>
-                  <Row style={{marginTop: "20px"}}>
-                      {this.getSource(source)}
-                  </Row>
+                <Row style={{marginTop: "20px"}}>
+                  {this.getSource(source)}
+                </Row>
               </div>
           }
         </div>

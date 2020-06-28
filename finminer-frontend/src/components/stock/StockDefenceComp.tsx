@@ -5,11 +5,12 @@
  */
 
 import * as React from "react";
-import {apiGetDefenseInfoById} from "../../api/index.api";
-import {DefenseResponse} from "../../api/interfaces/response/stock/StockResponse";
-import {Statistic, Row, Col, Spin, Table} from "antd";
+import {apiGetDefenseInfoById, apiGetStockKLineAboutDefence} from "../../api/index.api";
+import {DefenseResponse, StockKLineDefenceResponse} from "../../api/interfaces/response/stock/StockResponse";
+import {Statistic, Row, Col, Spin, Table, Button, Modal} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
+import {CandlestickDefenceChart} from "../charts/CandlestickDefenceChart";
 
 
 interface Defence {
@@ -20,7 +21,10 @@ class StockDefenceComp extends React.Component<Defence, any> {
   state = {
     companyId: this.props.companyId,
     // && this.props.companyId !== "" ? this.props.companyId : this.props.location.pathname.split("/")[2],
-    defenseData: Object as unknown as DefenseResponse
+    defenseData: Object as unknown as DefenseResponse,
+    showChart: false,
+    selectedYear: 2017,
+    pastChartData: Object as unknown as StockKLineDefenceResponse
   };
 
   async getStockDefenceData() {
@@ -31,6 +35,23 @@ class StockDefenceComp extends React.Component<Defence, any> {
       defenseData: data
     });
   }
+
+  async getStockKlineAboutStock(year: number) {
+    const res = await apiGetStockKLineAboutDefence(year, this.state.companyId);
+    this.setState({
+      pastChartData: res.data
+    });
+  }
+
+  showDetail = (record: any) => {
+    this.getStockKlineAboutStock(record.year).then(() => {
+          this.setState({
+            showChart: true,
+            selectedYear: record.year
+          });
+        }
+    );
+  };
 
   componentWillReceiveProps(nextProps: Readonly<Defence>, nextContext: any): void {
     this.setState({
@@ -62,17 +83,21 @@ class StockDefenceComp extends React.Component<Defence, any> {
       },
       {
         title: "买卖次数",
-        dataIndex: "times"
+        dataIndex: "times",
+        render: (value: number, record: any) =>
+            <span>{value}
+              <Button ghost
+                      onClick={() => this.showDetail(record)}
+                      style={{float: "right"}}>查看详情</Button>
+            </span>
       }
     ];
-
+    const pastChartData = this.state.pastChartData;
 
     return (
         <div>
           {Object.keys(defenseData).length === 0 ? <Spin /> :
               <div>
-                <Row>
-                </Row>
                 <Row>
                   <Col span={3}> <Statistic title={"投资推荐"}
                                             value={defenseData.shouldBuy ? "推荐买入" : "暂不推荐"}
@@ -83,6 +108,21 @@ class StockDefenceComp extends React.Component<Defence, any> {
                 <div style={{marginTop: "20px"}}>
                   <Table columns={columns} dataSource={defenseData.revenueRatio} />
                 </div>
+                {
+                  this.state.showChart ?
+                      <Modal title={this.state.selectedYear + "年详情信息"}
+                             visible={this.state.showChart}
+                             footer={null}
+                             style={{
+                               minWidth: "65vw",
+                               minHeight: "65vh"
+                             }}
+                             onCancel={() => this.setState({showChart: false})}>
+                        {
+                          CandlestickDefenceChart(pastChartData.rawData, pastChartData.defensePoint, pastChartData.buyPoint, pastChartData.sellPoint)
+                        }
+                      </Modal> : <></>
+                }
               </div>}
         </div>
     );
