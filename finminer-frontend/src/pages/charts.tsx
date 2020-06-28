@@ -60,8 +60,9 @@ class Charts extends React.Component {
                                         }}>{index + 1}</Avatar>}
                         title={info.companyId}
                         description={info.companyName}
+                        style={{minWidth: "35%"}}
         />
-        <Descriptions column={4} style={{marginLeft: "30px"}}>
+        <Descriptions column={4}>
           <Descriptions.Item span={2}>
             <Statistic title={"总资产"}
                        value={info.total_asset === 0 ? "暂无数据" : info.total_asset}
