@@ -3,12 +3,11 @@ import React from "react";
 import Defense from "../../pages/defense"
 import Homepage from "../../pages/homepage";
 import Charts from "../../pages/charts";
-import {PageHeader} from "../../components/layout/header";
+import PageHeader from "../../components/layout/header";
 import Dashboard from "../../pages/dashboard";
 import StockInfoComp from "../../components/stock/StockInfoComp";
 import StockCandlestickComp from "../../components/stock/StockCandlestickComp";
 import StockNetworkComp from "../../components/stock/StockNetworkComp";
-import StockDefenceComp from "../../components/stock/StockDefenceComp";
 
 export const RouteConfig = () => (
   <BrowserRouter>
@@ -25,21 +24,25 @@ export const RouteList = [
   {
     path: "/",
     name: "首页",
+    key:'homepage',
     component:Homepage
   },
   {
     path: "/defense",
     name: "投资推荐",
+    key:'defense',
     component:Defense
   },
   {
     path: "/dashboard",
     name: "数据面板",
+    key:'dashboard',
     component:Dashboard
   },
   {
     path: "/charts",
     name: "GDP可视化",
+    key:'charts',
     component: Charts
   }
 ];

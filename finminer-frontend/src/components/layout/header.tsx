@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {Layout, Menu} from "antd";
 import {ReactNode} from "react";
 import {RouteList} from "../../config/routes/index.route";
@@ -11,15 +11,18 @@ import {RouteList} from "../../config/routes/index.route";
 const {Header,Content} = Layout;
 
 
-export class PageHeader extends React.Component<any, any> {
+class PageHeader extends React.Component<any, any> {
   render(): ReactNode {
     return (
         <Layout>
         <Header style={{ position: 'fixed', zIndex: 1, width: '100%'}}>
           <div className="logo" />
-          <Menu theme="dark" mode="horizontal">
+          <Menu theme="dark"
+                mode="horizontal"
+                selectedKeys={this.props.location.pathname.split("/")[1]}
+          >
             {RouteList.map((route) =>
-                <Menu.Item key={route.name}><Link to={route.path}>{route.name}</Link></Menu.Item>
+                <Menu.Item key={route.key}><Link to={route.path}>{route.name}</Link></Menu.Item>
             )}
           </Menu>
         </Header>
@@ -32,3 +35,4 @@ export class PageHeader extends React.Component<any, any> {
   }
 }
 
+export default withRouter(PageHeader)
