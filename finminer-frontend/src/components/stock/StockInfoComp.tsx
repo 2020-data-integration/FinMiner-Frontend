@@ -49,25 +49,36 @@ class StockInfoComp extends React.Component<any, any> {
 
   getBasicInfo = (info: StockInfoResponse) => {
     return (
-        <Descriptions title={this.state.companyId}>
-          <Descriptions.Item label={"简称"}>{info.name}</Descriptions.Item>
-          <Descriptions.Item label={"公司名"} span={2}>{info.company_name}</Descriptions.Item>
-          <Descriptions.Item label={"行业"}>{info.industry}</Descriptions.Item>
-          <Descriptions.Item label={"地区"} span={2}>{info.area}</Descriptions.Item>
-          <Descriptions.Item label={"概念"} span={3}>
-            {info.concept.map((item) => <Tag key={item} color={"gold"} style={{marginBottom: "10px"}}>{item}</Tag>)}
-          </Descriptions.Item>
-          <Descriptions.Item label={"高管"} span={3}>
-            {info.managers.map(manager =>
-                <Tag key={manager.manager_id} color={"yellow"}
-                     style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
-          </Descriptions.Item>
-          <Descriptions.Item label={"持股人"} span={3}>
-            {info.holders.map(holder =>
-                <Tag key={holder.holder_id} color={"cyan"} style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
-          </Descriptions.Item>
+        <div>
+          <Title level={3}>{this.state.companyId}</Title>
 
-        </Descriptions>
+          <Descriptions column={3}>
+            <Descriptions.Item label={"简称"}>{info.name}</Descriptions.Item>
+            <Descriptions.Item label={"公司名"} span={2}>{info.company_name}</Descriptions.Item>
+            <Descriptions.Item label={"行业"}>{info.industry}</Descriptions.Item>
+            <Descriptions.Item label={"地区"} span={2}>{info.area}</Descriptions.Item>
+            <Descriptions.Item label={"概念"} span={3}>
+              <div>
+                {info.concept.map((item) => <Tag key={item} color={"gold"} style={{marginBottom: "10px"}}>{item}</Tag>)}
+              </div>
+            </Descriptions.Item>
+            <Descriptions.Item label={"高管"} span={3}>
+              <div>
+                {info.managers.map(manager =>
+                    <Tag key={manager.manager_id} color={"yellow"}
+                         style={{marginBottom: "10px"}}>{manager.manager_name}</Tag>)}
+              </div>
+            </Descriptions.Item>
+            <Descriptions.Item label={"持股人"} span={3}>
+              <div>
+                {info.holders.map(holder =>
+                    <Tag key={holder.holder_id} color={"cyan"}
+                         style={{marginBottom: "10px"}}>{holder.holder_name}</Tag>)}
+              </div>
+            </Descriptions.Item>
+
+          </Descriptions>
+        </div>
     );
   };
 
@@ -103,7 +114,7 @@ class StockInfoComp extends React.Component<any, any> {
 
   getFinancialReport = (info: StockInfoResponse) => {
     return (
-        <Descriptions column={1} title={"公司财报"}>
+        <Descriptions column={1} title={"公司财报"} style={{marginTop: "10px"}}>
           <Descriptions.Item> <Statistic title={"每股收益增长率"} value={info.change_pct} /></Descriptions.Item>
           <Descriptions.Item> <Statistic title={"净资产"} value={info.net_asset} /></Descriptions.Item>
 
