@@ -16,9 +16,7 @@ export interface StockAbstractResponse {
   change: number,
   pct_chg: number,
   vol: number,
-  amount: number,
-  shouldBuy: boolean,     // 今天是否应该买入
-  recommendIndex: number   // 推荐指标
+  amount: number
 }
 
 export interface StockInfoResponse {
