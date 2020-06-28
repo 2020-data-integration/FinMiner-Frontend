@@ -1,16 +1,23 @@
 import ReactEcharts from "echarts-for-react";
 import {loadingOpt} from "./chartsOpt";
 import * as React from "react";
-import {number} from "prop-types";
 
 
 export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint?: Array<Array<any>>, buyPoint?: Array<Array<any>>, sellPoint?: Array<Array<any>>) {
   const defensePoints = defensePoint === undefined ? [] : defensePoint.map(point => {
     return {
       coord: point,
-      value: "防守点",
+      symbol: "pin",
+      symbolSize: 40,
+      symbolRotate: 0,
+      symbolOffset: [0, "-10%"],
+      value: "防",
       itemStyle: {
-        color: "rgb(41,60,85)"
+        color: "#112123",
+        borderColor: "#144848"
+      },
+      label: {
+        color: "#13a8a8"
       }
     };
   });
@@ -18,9 +25,17 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint
   const buyPoints = buyPoint === undefined ? [] : buyPoint.map(point => {
     return {
       coord: point,
-      value: "买入点",
+      symbol:"diamond",
+      symbolSize: 25,
+      symbolRotate: 90,
+      symbolOffset: [0, "60%"],
+      value: "买",
       itemStyle: {
-        color: "rgb(41,60,85)"
+        color: "#2b2611",
+        borderColor: "#595014"
+      },
+      label: {
+        color: "#d8bd14"
       }
     };
   });
@@ -28,9 +43,17 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint
   const sellPoints = sellPoint === undefined ? [] : sellPoint.map(point => {
     return {
       coord: point,
-      value: "卖出点",
+      symbol:"diamond",
+      symbolSize: 25,
+      symbolRotate: -90,
+      symbolOffset: [0, "60%"],
+      value: "卖",
       itemStyle: {
-        color: "rgb(41,60,85)"
+        color: "#2b2111",
+        borderColor: "#594214"
+      },
+      label: {
+        color: "#d89614"
       }
     };
   });
@@ -38,13 +61,6 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint
 
   let option = {
     backgroundColor: "transparent",
-    legend: {
-      data: ["日K"],
-      inactiveColor: "#777",
-      textStyle: {
-        color: "#fff"
-      }
-    },
     tooltip: {
       trigger: "axis",
       axisPointer: {
@@ -125,6 +141,7 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint
       }
     ]
   };
+  console.log(option);
   return (
       // @ts-ignore
       <ReactEcharts option={option}

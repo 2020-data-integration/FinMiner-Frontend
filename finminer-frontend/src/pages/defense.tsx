@@ -69,7 +69,7 @@ class Defense extends React.Component {
                   color: rankStyle(index)[1],
                   borderColor: rankStyle(index)[2]
                 }}>{index + 1}</Avatar>
-                {company.companyId} {company.companyName} {company.recommendIndex} {company.shouldBuy}
+                {company.companyId} {company.companyName} {company.shouldBuy} {company.recommendIndex}
               </Menu.Item>
           )}
           <Menu.Item key="loading-key" icon={<DownOutlined />} style={{textAlign: "center"}} />

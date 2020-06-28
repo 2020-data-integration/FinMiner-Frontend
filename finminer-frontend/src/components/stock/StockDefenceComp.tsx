@@ -5,8 +5,12 @@
  */
 
 import * as React from "react";
-import {apiGetDefenseInfoById, apiGetStockKLineAboutDefence} from "../../api/index.api";
-import {DefenseResponse, StockKLineDefenceResponse} from "../../api/interfaces/response/stock/StockResponse";
+import {apiGetDefenseInfoById, apiGetStockBuyRecommend, apiGetStockKLineAboutDefence} from "../../api/index.api";
+import {
+  DefenseResponse,
+  StockBuyRecommendResponse,
+  StockKLineDefenceResponse
+} from "../../api/interfaces/response/stock/StockResponse";
 import {Statistic, Row, Col, Spin, Table, Button, Modal} from "antd";
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
@@ -24,7 +28,8 @@ class StockDefenceComp extends React.Component<Defence, any> {
     defenseData: Object as unknown as DefenseResponse,
     showChart: false,
     selectedYear: 2017,
-    pastChartData: Object as unknown as StockKLineDefenceResponse
+    pastChartData: Object as unknown as StockKLineDefenceResponse,
+    currentChartData: Object as unknown as StockBuyRecommendResponse
   };
 
   async getStockDefenceData() {
@@ -43,6 +48,14 @@ class StockDefenceComp extends React.Component<Defence, any> {
     });
   }
 
+  async getStockBuyRecommend() {
+    const res = await apiGetStockBuyRecommend(this.state.companyId);
+    this.setState({
+      currentChartData: res.data
+    });
+
+  }
+
   showDetail = (record: any) => {
     this.getStockKlineAboutStock(record.year).then(() => {
           this.setState({
@@ -56,11 +69,15 @@ class StockDefenceComp extends React.Component<Defence, any> {
   componentWillReceiveProps(nextProps: Readonly<Defence>, nextContext: any): void {
     this.setState({
       companyId: nextProps.companyId
-    }, () => this.getStockDefenceData());
+    }, () => {
+      this.getStockDefenceData();
+      this.getStockBuyRecommend();
+    });
   }
 
   componentDidMount(): void {
     this.getStockDefenceData();
+    this.getStockBuyRecommend();
   }
 
 
@@ -93,10 +110,11 @@ class StockDefenceComp extends React.Component<Defence, any> {
       }
     ];
     const pastChartData = this.state.pastChartData;
+    const currentChartData = this.state.currentChartData;
 
     return (
         <div>
-          {Object.keys(defenseData).length === 0 ? <Spin /> :
+          {Object.keys(defenseData).length === 0 || Object.keys(currentChartData).length === 0 ? <Spin /> :
               <div>
                 <Row>
                   <Col span={3}> <Statistic title={"投资推荐"}
@@ -104,6 +122,9 @@ class StockDefenceComp extends React.Component<Defence, any> {
                                             valueStyle={{fontSize: "25px"}}
                   /></Col>
                   <Col span={3}><Statistic title={"夏普比率"} precision={2} value={defenseData.recommendIndex} /></Col>
+                </Row>
+                <Row>
+                  {CandlestickDefenceChart(currentChartData.rawData, [currentChartData.defensePoint])}
                 </Row>
                 <div style={{marginTop: "20px"}}>
                   <Table columns={columns} dataSource={defenseData.revenueRatio} />
