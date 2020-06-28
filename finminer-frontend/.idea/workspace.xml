@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cd570f2d-325e-4b9b-8c43-06e9895b87d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/charts/CandlestickDefenceChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charts/CandlestickDefenceChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stock/StockDefenceComp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stock/StockDefenceComp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/defense.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/defense.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../finminder-frontend/.tmp/" />
@@ -23,28 +21,21 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.63284004">
+    <splitter split-orientation="horizontal" split-proportion="0.46652573">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/stock/StockDefenceComp.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="178">
-                  <caret line="142" column="54" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
+                <state relative-caret-position="306">
+                  <caret line="170" column="58" selection-start-line="170" selection-start-column="58" selection-end-line="170" selection-end-column="72" />
                   <folding>
                     <element signature="e#64#95#0" expanded="true" />
                     <element signature="n#!!block;n#getStockDefenceData#0;n#StockDefenceComp#0" />
                     <element signature="e#1488#1676#0" />
+                    <element signature="e#2475#2502#0" />
+                    <element signature="e#2596#3376#0" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/alert/index.d.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="713">
-                  <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -61,11 +52,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/utils/valueStyle.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="455">
-                  <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+                <state relative-caret-position="161">
+                  <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -74,14 +65,20 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/pages/defense.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="26">
+                  <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.es2015.core.d.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="342">
+                  <caret line="471" column="4" selection-start-line="471" selection-start-column="4" selection-end-line="471" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -94,42 +91,6 @@
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                     <element signature="n#!!block;n#getGdpData#0;n#Charts#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/charts/GeoChart.tsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1591">
-                  <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#0#35#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/public/charts.tsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2461">
-                  <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#65#96#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/charts/CandlestickDefenceChart.tsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="439">
-                  <caret line="149" column="37" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -253,12 +214,12 @@
         <option value="$PROJECT_DIR$/src/components/public/charts.tsx" />
         <option value="$PROJECT_DIR$/src/config/routes/index.route.js" />
         <option value="$PROJECT_DIR$/src/pages/charts.tsx" />
-        <option value="$PROJECT_DIR$/src/api/interfaces/response/stock/StockResponse.ts" />
         <option value="$PROJECT_DIR$/src/components/stock/StockAbrstractListComp.tsx" />
         <option value="$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx" />
-        <option value="$PROJECT_DIR$/src/pages/defense.tsx" />
         <option value="$PROJECT_DIR$/src/components/charts/CandlestickDefenceChart.tsx" />
         <option value="$PROJECT_DIR$/src/components/stock/StockDefenceComp.tsx" />
+        <option value="$PROJECT_DIR$/src/api/interfaces/response/stock/StockResponse.ts" />
+        <option value="$PROJECT_DIR$/src/pages/defense.tsx" />
       </list>
     </option>
   </component>
@@ -389,7 +350,7 @@
       <workItem from="1592486418680" duration="19975000" />
       <workItem from="1592701470488" duration="46529000" />
       <workItem from="1593176315584" duration="12094000" />
-      <workItem from="1593312691455" duration="13438000" />
+      <workItem from="1593312691455" duration="14966000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 添加图表Loading效果">
       <created>1592490399718</created>
@@ -650,11 +611,25 @@
       <option name="project" value="LOCAL" />
       <updated>1593351886739</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="feat: 添加页面说明">
+      <created>1593363917737</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1593363917737</updated>
+    </task>
+    <task id="LOCAL-00039" summary="feat: 完成投资推荐menu">
+      <created>1593365417639</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1593365417639</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144165000" />
+    <option name="totallyTimeSpent" value="145693000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -682,9 +657,9 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.42383292" />
-      <window_info anchor="bottom" id="TypeScript" order="9" weight="0.3280098" />
+      <window_info active="true" anchor="bottom" id="TypeScript" order="9" visible="true" weight="0.3280098" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50039715" side_tool="true" weight="0.3339254" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960285" visible="true" weight="0.14004914" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960285" weight="0.4115479" />
       <window_info anchor="bottom" id="Statistic" order="12" weight="0.6486486" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.34398034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -759,8 +734,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: 修复数据详情公司财报为null的情况" />
-    <MESSAGE value="fix: 为循环项添加key" />
     <MESSAGE value="fix: 修改网络图接口" />
     <MESSAGE value="interface: 重构network接口" />
     <MESSAGE value="style: 优化Tab" />
@@ -784,7 +757,9 @@
     <MESSAGE value="style: 优化dashboard样式" />
     <MESSAGE value="feat: 完成防守点K线图" />
     <MESSAGE value="style: 优化防守点K线图样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: 优化防守点K线图样式" />
+    <MESSAGE value="feat: 添加页面说明" />
+    <MESSAGE value="feat: 完成投资推荐menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 完成投资推荐menu" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/images/logo.jpg" />
@@ -854,13 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-214">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.es2015.core.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="197" column="4" selection-start-line="197" selection-start-column="4" selection-end-line="197" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -991,16 +959,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/public/charts.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2461">
-          <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
-          <folding>
-            <element signature="e#65#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/charts/GeoChart.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1591">
@@ -1008,13 +966,6 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/interfaces/response/stock/StockResponse.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1064,10 +1015,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/valueStyle.ts">
+    <entry file="file://$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state relative-caret-position="207">
+          <caret line="9" column="34" selection-start-line="9" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/alert/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/charts/CandlestickDefenceChart.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="149" column="37" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/public/charts.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+          <folding>
+            <element signature="e#65#96#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1082,52 +1063,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/defense.tsx">
+    <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.es2015.core.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="342">
+          <caret line="471" column="4" selection-start-line="471" selection-start-column="4" selection-end-line="471" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/stock/StockInfoComp.tsx">
+    <entry file="file://$PROJECT_DIR$/src/api/interfaces/response/stock/StockResponse.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="34" selection-start-line="9" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/charts/CandlestickDefenceChart.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="149" column="37" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/alert/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        <state relative-caret-position="220">
+          <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/stock/StockDefenceComp.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="142" column="54" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
+        <state relative-caret-position="306">
+          <caret line="170" column="58" selection-start-line="170" selection-start-column="58" selection-end-line="170" selection-end-column="72" />
           <folding>
             <element signature="e#64#95#0" expanded="true" />
             <element signature="n#!!block;n#getStockDefenceData#0;n#StockDefenceComp#0" />
             <element signature="e#1488#1676#0" />
+            <element signature="e#2475#2502#0" />
+            <element signature="e#2596#3376#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/valueStyle.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/defense.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
         </state>
       </provider>
     </entry>

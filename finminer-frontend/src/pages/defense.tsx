@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, Menu, Statistic, Row, Col, Tabs, Avatar} from "antd";
+import {Layout, Menu, Statistic, Avatar} from "antd";
 import {DislikeOutlined, DownOutlined, LikeOutlined} from "@ant-design/icons/lib";
 import {SharpResponse} from "../api/interfaces/response/stock/StockResponse";
 import {apiGetCompanyRankBySharp} from "../api/index.api";
