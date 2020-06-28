@@ -120,7 +120,7 @@ export interface SharpResponse{
   companyId: string,
   companyName: string,
   shouldBuy: boolean,     // 今天是否应该买入
-  recommendIndex: boolean    // 推荐指标
+  recommendIndex: number    // 推荐指标
 }
 
 export interface StockKLineDefenceResponse{

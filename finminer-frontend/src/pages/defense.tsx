@@ -1,6 +1,6 @@
 import React from "react";
 import {Layout, Menu, Statistic, Row, Col, Tabs, Avatar} from "antd";
-import {DownOutlined} from "@ant-design/icons/lib";
+import {DislikeOutlined, DownOutlined, LikeOutlined} from "@ant-design/icons/lib";
 import {SharpResponse} from "../api/interfaces/response/stock/StockResponse";
 import {apiGetCompanyRankBySharp} from "../api/index.api";
 import {ClickParam} from "antd/es/menu";
@@ -61,7 +61,10 @@ class Defense extends React.Component {
                          style={{
                            height: "100px",
                            width: this.menuWidth,
-                           borderBottom: "2px solid #1f1f1f"
+                           borderBottom: "2px solid #1f1f1f",
+                           display: "flex",
+                           alignItems: "center",
+                           flexDirection: "row"
                          }}
               >
                 <Avatar style={{
@@ -69,7 +72,25 @@ class Defense extends React.Component {
                   color: rankStyle(index)[1],
                   borderColor: rankStyle(index)[2]
                 }}>{index + 1}</Avatar>
-                {company.companyId} {company.companyName} {company.shouldBuy} {company.recommendIndex}
+                <Statistic style={{marginLeft: "15px"}}
+                           title={company.companyName}
+                           value={company.companyId}
+                           valueStyle={{fontSize: "18px"}}
+                />
+                <Statistic style={{marginLeft: "15px"}}
+                           title={"夏普比率"}
+                           precision={2}
+                           value={company.recommendIndex}
+                           valueStyle={{fontSize: "20px"}}
+                />
+                <div style={{marginLeft: "15px"}}>
+                  {company.shouldBuy ? <LikeOutlined
+                      style={{color: "#df1050"}}
+                  /> : <DislikeOutlined
+                      style={{color: "#04f49b"}}
+                  />}
+                </div>
+
               </Menu.Item>
           )}
           <Menu.Item key="loading-key" icon={<DownOutlined />} style={{textAlign: "center"}} />

@@ -83,6 +83,45 @@ class StockDefenceComp extends React.Component<Defence, any> {
     this.getStockBuyRecommend();
   }
 
+  alertStyle = {marginBottom: "10px"};
+
+  getAlertComp = () => (
+      <div>
+        <Alert
+            message="投资推荐"
+            description={
+              <div>若当前股价低于左侧K线图中的防守点，则推荐买入
+              </div>}
+            type="success"
+            showIcon
+            style={this.alertStyle}
+        />
+        <Alert
+            message="夏普比率"
+            description={
+              <div>计算公式：投资组合预期报酬率/标准差。<br />
+                对收益与风险加以综合考虑，用以衡量金融资产的绩效表现<br />
+                夏普比率越高，则按推荐投资风险越低
+              </div>}
+            type="info"
+            showIcon
+            style={this.alertStyle}
+        />
+        <Alert
+            message="K线图标注"
+            description={
+              <div>
+                <div>- 防守点：如股价上涨2%，交易量上涨20%，则低点为防守点</div>
+                <div>- 买入点：若价格低于倒数第二个防守点，则买入</div>
+                <div>- 卖出点：在买入后，上涨超过3%或下跌超过5%，则卖出</div>
+              </div>
+            }
+            type="warning"
+            showIcon
+            style={this.alertStyle}
+        />
+      </div>
+  );
 
   render(): React.ReactNode {
     const defenseData = this.state.defenseData;
@@ -114,14 +153,13 @@ class StockDefenceComp extends React.Component<Defence, any> {
             </span>
       }
     ];
-    const alertStyle = {marginBottom: "10px"};
 
     return (
         <div>
           {Object.keys(defenseData).length === 0 || Object.keys(currentChartData).length === 0 ? <Spin /> :
               <div>
                 <Row>
-                  <Col span={6}>
+                  <Col span={7}>
                     <Title level={2}
                            style={{marginTop: "10px", marginLeft: "10px"}}
                     >{this.state.companyId}</Title>
@@ -137,39 +175,7 @@ class StockDefenceComp extends React.Component<Defence, any> {
                     {CandlestickDefenceChart(currentChartData.rawData, [currentChartData.defensePoint])}
                   </div>
                   <div style={{marginLeft: "20px"}}>
-                    <Alert
-                        message="投资推荐"
-                        description={
-                          <div>若当前股价低于左侧K线图中的防守点，则推荐买入
-                          </div>}
-                        type="success"
-                        showIcon
-                        style={alertStyle}
-                    />
-                    <Alert
-                        message="夏普比率"
-                        description={
-                          <div>计算公式：投资组合预期报酬率/标准差。<br />
-                            对收益与风险加以综合考虑，用以衡量金融资产的绩效表现<br />
-                            夏普比率越高，则按推荐投资风险越低
-                          </div>}
-                        type="info"
-                        showIcon
-                        style={alertStyle}
-                    />
-                    <Alert
-                        message="K线图标注"
-                        description={
-                          <div>
-                            <div>- 防守点：如股价上涨2%，交易量上涨20%，则低点为防守点</div>
-                            <div>- 买入点：若价格低于倒数第二个防守点，则买入</div>
-                            <div>- 卖出点：在买入后，上涨超过3%或下跌超过5%，则卖出</div>
-                          </div>
-                        }
-                        type="warning"
-                        showIcon
-                        style={alertStyle}
-                    />
+                    {this.getAlertComp()}
                   </div>
                 </div>
                 <div style={{marginTop: "20px"}}>
