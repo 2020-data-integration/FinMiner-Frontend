@@ -47,7 +47,7 @@
 .vcenter {
   position:absolute;
   left:10%;
-  top:70px;
+  top:50px;
   font-size:450%;
   font-family: fantasy;
 }
@@ -70,17 +70,17 @@
   text-align: center;
   margin-top: 3%;
   padding: 40px;
-  font-size:450%;
+  font-size:420%;
 }
 .sli{
-  font-size:350%;
+  font-size:300%;
 }
 .content{
   margin-top: 40px;
   font-size:25%;
 }
 .getInfo{
-  width: 50%;
+  width: 500px;
   /* 文字颜色 */
   /* 清除背景色 */
   background: transparent;
