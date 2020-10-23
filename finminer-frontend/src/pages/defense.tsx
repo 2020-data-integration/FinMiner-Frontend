@@ -1,6 +1,6 @@
 import React from "react";
 import {Layout, Menu, Statistic, Avatar} from "antd";
-import {DislikeOutlined, DownOutlined, LikeOutlined} from "@ant-design/icons/lib";
+import {CaretUpOutlined, DislikeOutlined, DownOutlined, LikeOutlined} from "@ant-design/icons/lib";
 import {SharpResponse} from "../api/interfaces/response/stock/StockResponse";
 import {apiGetCompanyRankBySharp} from "../api/index.api";
 import {ClickParam} from "antd/es/menu";
@@ -84,11 +84,15 @@ class Defense extends React.Component {
                            valueStyle={{fontSize: "20px"}}
                 />
                 <div style={{marginLeft: "15px"}}>
-                  {company.shouldBuy ? <LikeOutlined
-                      style={{color: "#df1050"}}
-                  /> : <DislikeOutlined
-                      style={{color: "#04f49b"}}
-                  />}
+                  {company.shouldBuy === "None" ?
+                      <CaretUpOutlined
+                          style={{color:"#00b7ff"}}
+                      /> :
+                      company.shouldBuy === "True" ? <LikeOutlined
+                          style={{color: "#df1050"}}
+                      /> : <DislikeOutlined
+                          style={{color: "#04f49b"}}
+                      />}
                 </div>
 
               </Menu.Item>

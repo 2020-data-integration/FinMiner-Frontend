@@ -3,8 +3,7 @@ import {withRouter} from "react-router-dom";
 import {Candlestick} from "../public/charts";
 import {apiGetStockKLineById} from "../../api/index.api";
 import {StockKLineResponse} from "../../api/interfaces/response/stock/StockResponse";
-import {Descriptions, Divider, Typography} from "antd";
-const {Paragraph} = Typography;
+import {Divider} from "antd";
 
 class StockCandlestickComp extends React.Component<any, any> {
   state = {

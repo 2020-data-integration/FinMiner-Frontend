@@ -147,7 +147,7 @@ export function CandlestickDefenceChart(rawData: Array<Array<any>>, defensePoint
       <ReactEcharts option={option}
                     showLoading={rawData === undefined || rawData.length === 0}
                     loadingOption={loadingOpt}
-                    style={{height:"50vh"}}
+                    style={{height:"72vh"}}
 
       />
   );

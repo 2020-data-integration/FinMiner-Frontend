@@ -15,7 +15,6 @@ import {Statistic, Row, Col, Spin, Table, Button, Modal, Typography, Alert, Tool
 import {valueStyle} from "../../utils/valueStyle";
 import {ArrowUpOutlined, ArrowDownOutlined} from "@ant-design/icons";
 import {CandlestickDefenceChart} from "../charts/CandlestickDefenceChart";
-import ReactEcharts from "echarts-for-react";
 import {QuestionOutlined} from "@ant-design/icons/lib";
 
 const {Title} = Typography;
@@ -159,23 +158,28 @@ class StockDefenceComp extends React.Component<Defence, any> {
           {Object.keys(defenseData).length === 0 || Object.keys(currentChartData).length === 0 ? <Spin /> :
               <div>
                 <Row>
-                  <Col span={7}>
+                  <Col span={8}>
                     <Title level={2}
                            style={{marginTop: "10px", marginLeft: "10px"}}
                     >{this.state.companyId}</Title>
                   </Col>
                   <Col span={3}> <Statistic title={"投资推荐"}
-                                            value={defenseData.shouldBuy ? "推荐买入" : "暂不推荐"}
+                                            value={defenseData.shouldBuy === "None" ? "昨日暂无数据" : defenseData.shouldBuy === "True" ? "推荐买入" : "暂不推荐"}
                                             valueStyle={{fontSize: "22px"}}
                   /></Col>
                   <Col span={3}><Statistic title={"夏普比率"} precision={2} value={defenseData.recommendIndex} /></Col>
+                  <Col span={1}>
+                    <Tooltip
+                        title={this.getAlertComp()}>
+                      <Button shape={"circle"}
+                              style={{marginLeft: "10px"}}
+                              icon={<QuestionOutlined />} size={"small"} />
+                    </Tooltip>
+                  </Col>
                 </Row>
                 <div style={{display: "flex", alignItems: "center", marginTop: "20px"}}>
-                  <div style={{width: "55%"}}>
+                  <div style={{width: "90%"}}>
                     {CandlestickDefenceChart(currentChartData.rawData, [currentChartData.defensePoint])}
-                  </div>
-                  <div style={{marginLeft: "20px"}}>
-                    {this.getAlertComp()}
                   </div>
                 </div>
                 <div style={{marginTop: "20px"}}>

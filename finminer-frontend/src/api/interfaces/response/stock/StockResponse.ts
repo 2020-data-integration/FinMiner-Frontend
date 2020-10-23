@@ -105,7 +105,7 @@ export interface GdpResponse {
 
 
 export interface DefenseResponse {
-  shouldBuy: boolean,     // 今天是否应该买入
+  shouldBuy: string,     // 今天是否应该买入
   recommendIndex: number,   // 推荐指标
   revenueRatio: [{
     key: number,
@@ -119,7 +119,7 @@ export interface DefenseResponse {
 export interface SharpResponse{
   companyId: string,
   companyName: string,
-  shouldBuy: boolean,     // 今天是否应该买入
+  shouldBuy: string,     // 今天是否应该买入
   recommendIndex: number    // 推荐指标
 }
 

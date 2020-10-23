@@ -1,6 +1,5 @@
 import * as React from "react";
 import {link, node} from "../../api/interfaces/response/stock/StockResponse";
-import {chartsHeight} from "./chartsOpt";
 import ReactEcharts from "echarts-for-react";
 import {apiGetStockNetworkById} from "../../api/index.api";
 

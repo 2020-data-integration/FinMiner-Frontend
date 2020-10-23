@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import { Tabs,Card,Carousel,Row,Col,Typography} from 'antd';
+import { Tabs,Card,Carousel} from 'antd';
 import {Link} from 'react-router-dom';
 import tsIcon from "../images/Background.jpg";
 import GDP from "../images/GDP.png";
@@ -11,7 +11,6 @@ import DefenseImg from "../images/defenseImg.png";
 import '../App.css';
 const { TabPane } = Tabs;
 const { Meta } = Card;
-const { Title, Paragraph, Text } = Typography;
 class Homepage extends React.Component {
 
 
