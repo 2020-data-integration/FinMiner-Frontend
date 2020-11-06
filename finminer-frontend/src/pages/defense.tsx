@@ -12,7 +12,7 @@ const {Sider, Content} = Layout;
 class Defense extends React.Component {
   state = {
     companyRank: [] as SharpResponse[],
-    pageNum: 1,
+    pageNum: 2,
     selectedStock: ""
   };
   pageSize = 15;
@@ -41,7 +41,7 @@ class Defense extends React.Component {
     });
   }
 
-  componentDidMount(): void {
+  componentWillMount(): void {
     this.getCompanyRankBySharp(this.state.pageNum, this.pageSize).then(() => {
       this.setState({
         selectedStock: this.state.companyRank[0].companyId
